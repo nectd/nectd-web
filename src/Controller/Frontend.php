@@ -82,6 +82,62 @@ class Frontend extends ConfigurableBase
         return null;
     }
 
+
+    /**
+     * HH START
+     */
+
+    /**
+     * HH
+     ** Controller for the "Handler" route. 
+     * 
+     *
+     * @return BoltResponse
+     */
+    public function nctd_homepage()
+    {
+        // testing against regular homepage content we might want to incliude posts on the main page
+        $content = $this->getContent($this->getOption('general/nctd_homepage'));
+
+        // TODO DISPATCHER SERVCIE
+
+        $template = $this->templateChooser()->nctd_homepage($content);
+        // saving rawcontent for debug purpose
+        $globals = [
+            'rawcontent' => $content,
+        ];
+
+        //regular homepage content testing
+        if (is_array($content)) {
+            $globals = [
+                'records' => $content,
+            ];
+            $first = current($content);
+            $globals[$first->contenttype['slug']] = $content;
+        } elseif (!empty($content)) {
+            $globals = [
+                'records' => $content,
+            ];
+            $globals['record'] = $content;
+            $globals[$content->contenttype['singular_slug']] = $content;
+        } else {
+        // Nothing returned? well, it's an handler!
+           // $template = $this->templateChooser()->nctd_handler($content);
+           // $globals = [
+        //   'handle' => $content,
+           // ];
+        }
+
+
+        return $this->render($template, [], $globals);
+    }
+
+
+
+    /**
+     * HH END
+     */
+
     /**
      * Controller for the "Homepage" route. Usually the front page of the website.
      *
@@ -119,6 +175,7 @@ class Frontend extends ConfigurableBase
      */
     public function record(Request $request, $contenttypeslug, $slug = '')
     {
+        $rawcontent = $slug;
         $contenttype = $this->getContentType($contenttypeslug);
 
         // If the contenttype is 'viewless', don't show the record page.
@@ -144,8 +201,22 @@ class Frontend extends ConfigurableBase
 
         // No content, no page!
         if (!$content) {
-            $this->abort(Response::HTTP_NOT_FOUND, "Page $contenttypeslug/$slug not found.");
-            return null;
+            // HH START
+            
+            //$this->abort(Response::HTTP_NOT_FOUND, "Page $contenttypeslug/$slug not found.");
+            //return null;
+            
+            // We are here, no match for the static pages, it should be an handle.
+            // We need to redirect to our handle controller
+            $template = $this->templateChooser()->nctd_handler($content);
+            $paths = $this->app['resources']->getPaths();
+            $globals = [
+                'handle' => $rawcontent
+            ];
+
+            return $this->render($template, [], $globals);
+
+            // HH END
         }
 
         // Then, select which template to use, based on our 'cascading templates rules'

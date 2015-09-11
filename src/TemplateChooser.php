@@ -20,6 +20,75 @@ class TemplateChooser
         $this->app = $app;
     }
 
+
+    /**
+     * HH START
+     */
+
+
+    /**
+     * HH 
+     * Template for Handler page
+     *
+     * @param \Bolt\Legacy\Content|\Bolt\Legacy\Content[] $content
+     *
+     * @return string
+     */
+    public function nctd_handler($content)
+    {
+        // First candidate: Global config.yml file.
+        $template = $this->app['config']->get('general/nctd_handler_template');
+
+        // Second candidate: Theme-specific config.yml file.
+        if ($this->app['config']->get('theme/nctd_handler_template')) {
+            $template = $this->app['config']->get('theme/nctd_handler_template');
+        }
+
+        // Fallback if no content: handler.twig
+        if (empty($template)) {
+                $template = 'nctd_handler.twig';
+        }
+        return $template;
+    }
+
+    /**
+     * HH
+     * Choose a template for the website homepage.
+     *
+     * @param \Bolt\Legacy\Content|\Bolt\Legacy\Content[] $content
+     *
+     * @return string
+     */
+    public function nctd_homepage($content)
+    {
+        // First candidate: Global config.yml file.
+        $template = $this->app['config']->get('general/nctd_homepage_template');
+
+        // Second candidate: Theme-specific config.yml file.
+        if ($this->app['config']->get('theme/nctd_homepage_template')) {
+            $template = $this->app['config']->get('theme/nctd_homepage_template');
+        }
+
+        // Fallback if no content: index.twig
+        if (empty($content) && empty($template)) {
+                $template = 'index.twig';
+        }
+
+        /* Fallback with content: use record() or listing() to choose template
+        if (empty($template)) {
+            if (is_array($content)) {
+                $first = current($content);
+                return $this->listing($first->contenttype);
+            } else {
+                return $this->record($content);
+            }
+        } else {
+            return $template;
+        }
+        */
+        return $template;
+    }
+
     /**
      * Choose a template for the homepage.
      *
@@ -39,7 +108,9 @@ class TemplateChooser
 
         // Fallback if no content: index.twig
         if (empty($content) && empty($template)) {
-                $template = 'index.twig';
+                // HH
+                // $template = 'index.twig';
+                $template = 'blog.twig';
         }
 
         // Fallback with content: use record() or listing() to choose template
@@ -54,6 +125,10 @@ class TemplateChooser
             return $template;
         }
     }
+
+    /**
+     * HH END
+     */
 
     /**
      * Choose a template for a single record page, e.g.:

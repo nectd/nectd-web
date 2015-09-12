@@ -61,6 +61,15 @@ nctd_homepage:
     defaults:
         _controller: controller.frontend:nctd_homepage
 
+
+
+#THE PUPPA CODE
+puppa:
+    path: /puppa
+    defaults:
+        _controller: controller.frontend:nctd_puppa
+# BE AWESOME!
+
 homepage:
     path: /blog
     defaults:

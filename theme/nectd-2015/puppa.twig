@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Samaritan</title>
+        <meta charset="UTF-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <link rel="icon" sizes="192x192" href="img/icon.png">
+        <script type="text/javascript" src="{{paths.theme}}web/js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript">
+            function getUrlParameter(t){for(var e=window.location.search.substring(1),a=e.split("&"),n=0;n<a.length;n++){var i=a[n].split("=");if(i[0]==t)return i[1]}}$State={isText:!1,wordTime:250,wordAnim:150,random:!1,count:0,randomInterval:5e2,lastRandomIndex:-1,randomTimer:null,lastMouseUp:-1},$.fn.textWidth=function(){var t=$(this).html(),e="<span>"+t+"</span>";$(this).html(e);var a=$(this).find("span:first").width();return $(this).html(t),a},$(document).ready(function(){$State.triangle=$(".triangle"),$State.text=$(".main p"),$State.line=$(".main hr"),blinkTriangle();var t=function(t){void 0!==$State.phraselist&&(t=t.concat($State.phraselist)),$State.phraselist=t,randomTimePhrase()};$.ajax({dataType:"json",url:"{{paths.theme}}/resx/phraselist.json"}).done(t)});var blinkTriangle=function(){$State.isText||$State.triangle.fadeTo(500,0).fadeTo(500,1,blinkTriangle)},runRandomPhrase=function(){for(var t=Math.floor(Math.random()*($State.phraselist.length-0));t==$State.lastRandomIndex;)t=Math.floor(Math.random()*($State.phraselist.length-0));$State.lastRandomIndex=t,executeSamaritan($State.phraselist[t])},runOrderedPhrase=function(){executeSamaritan($State.phraselist[$State.count]),$State.count=$State.count+1},randomTimePhrase=function(){null!==$State.randomTimer&&clearTimeout($State.randomTimer);var t=Math.floor(3e3*Math.random());t+=$State.randomInterval,$State.random?$State.randomTimer=setTimeout(runRandomPhrase,t):$State.count<$State.phraselist.length?$State.randomTimer=setTimeout(runOrderedPhrase,t):window.location.replace("/")},executeSamaritan=function(t){if(!$State.isText){$State.isText=!0;var e=t.split(" ");$State.triangle.finish().animate({"font-size":"0em",opacity:"1"},{duration:$State.wordAnim,done:function(){var t=0;e.forEach(function(e){var a=$State.wordTime;e.length>8&&(a*=e.length/8),setTimeout(function(){$State.text.addClass("hidden").html(e),$State.line.animate({width:$State.text.textWidth()+18+"px"},{duration:$State.wordAnim,start:$State.text.removeClass("hidden")})},t+$State.wordAnim),t+=a}),setTimeout(function(){$State.text.html(""),$State.triangle.finish().animate({"font-size":"2em",opacity:"1"},{duration:$State.wordAnim,done:function(){$State.isText=!1,randomTimePhrase(),blinkTriangle(),$State.line.animate({width:"30px"},{duration:$State.wordAnim,start:$State.text.removeClass("hidden")})}})},t+$State.wordTime)}})}};
+        </script>
+        <style type="text/css"> 
+            .main,body{width:100%}.triangle,p{font-size:2em;font-family:magdacleanmono}@font-face{font-family:magdacleanmono;src:url({{paths.theme}}fonts/magdacleanmono-bold.ttf)}body{color:#FFF;background-color:#000;height:100%;position:fixed;margin:0;padding:0;text-align:center}p{text-transform:uppercase;display:block!important}.main,.marker{position:absolute;display:block}.main{bottom:50%}.main hr{width:30px;border-top:2px solid #FFF;border-bottom:none}.main hr,.main p{margin-top:0;margin-bottom:0}.main p.hidden{color:#000}.marker{width:100%;top:50%;vertical-align:top}.triangle{color:#A2CAD3}#settings{width:30px;height:30px;font-size:10px;position:absolute;bottom:0;right:0;color:#444}@media(min-width:900px){.main p.hidden{color:#fff}body{color:#000!important;background-color:#fff}.main hr{border-top:2px solid #000}}
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <p>&nbsp;</p>
+            <hr />
+        </div>
+        <div class="marker">
+            <span class="triangle">&#9650</span>
+        </div>
+    </body>
+</html>

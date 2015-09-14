@@ -78,7 +78,7 @@ homepage: page/1
 homepage_template: blog.twig
 
 # HH nectd services
-nctd_homepage_template: index.twig
+nctd_homepage_template: old_web/index.twig
 nctd_handler_template: nctd_handler.twig
 
 

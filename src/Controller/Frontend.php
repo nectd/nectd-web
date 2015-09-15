@@ -135,6 +135,11 @@ class Frontend extends ConfigurableBase
     # PUPPA CODE: BE AWESOME
     public function nctd_puppa() { return $this->render('puppa.twig'); }
 
+
+    # Pretotyping test
+    public function nctd_card() { return $this->render('web-cards/card.twig'); }
+    
+
     /**
      * HH END
      */

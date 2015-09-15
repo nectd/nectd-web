@@ -108,6 +108,13 @@ contentlisting:
     requirements:
         contenttypeslug: controller.requirement:pluralContentTypes
 
+#HH Pretotyping Test
+card:
+    path: /hoanghuynh
+    defaults:
+        _controller: controller.frontend:nctd_card
+
+
 # HH END
 
 # ------------------------------------------------------------------------------

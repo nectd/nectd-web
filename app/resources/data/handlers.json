@@ -1,0 +1,32 @@
+{
+    "hoanghuynh": {
+        "firstName": "Huynh",
+        "lastName": "Hoang",
+        "middleInitial": "C",
+        "phone": "+39 328 8655199",
+        "email": "hoang@huynh.cc",
+        "department": "Nectd llc.",
+        "role": "Nectd Co-Founder & Experience Strategist",
+        "social": {
+            "twitter": "aetheros",
+            "facebook": "hoang.c.huynh",
+            "linkedin": "hchuynh"
+        }
+    },
+    "hh": "hoanghuynh",
+    "maxart": {
+        "firstName": "Massimo",
+        "lastName": "Artizzu",
+        "middleInitial": "G",
+        "phone": "+39 347 6063467",
+        "email": "maxart.x@gmail.com",
+        "department": "Nectd llc.",
+        "role": "Nectd Lead Front-End Developer",
+        "social": {
+            "twitter": "MaxArt2501",
+            "facebook": "massimo.artizzu1",
+            "linkedin": "massimoartizzu"
+        }
+    },
+    "homie": "maxart"
+}

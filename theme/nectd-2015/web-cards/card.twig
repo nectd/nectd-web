@@ -22,23 +22,23 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<span class="avatar"><img src="{{paths.theme}}web-cards/images/avatar_1.png" alt="" /></span>
-							<h1>Hoang C. Huynh</h1>
-							<p>nectd Co-Founder & Experience Strategist</p>
+							<span class="avatar"><img src="{{paths.theme}}web-cards/images/{{ info.realHandler }}.png" alt="" /></span>
+							<h1>{{ info.firstName }}{{ info.middleInitial ? ' '~info.middleInitial~'.'}} {{ info.lastName }}</h1>
+							<p>{{ info.role }}</p>
 						</header>
-						
+
 						<hr />
 						<form method="post" action="#">
 							<div class="field">
-								<input type="text" name="name" id="name" placeholder="+39 328 8655199" disabled/>
+								<input type="text" name="name" id="name" placeholder="{{ info.phone }}" disabled/>
 							</div>
 							<div class="field">
-								<input type="email" name="email" id="email" placeholder="hoang@huynh.cc" disabled/>
+								<input type="email" name="email" id="email" placeholder="{{ info.email }}" disabled/>
 							</div>
 							<div class="field">
 								<div class="select-wrapper">
 									<select name="department" id="department" disabled>
-										<option value="">Nectd llc.</option>
+										<option value="">{{ info.department }}</option>
 									</select>
 								</div>
 							</div>
@@ -47,12 +47,12 @@
 							</ul>
 						</form>
 						<hr />
-						
+
 						<footer>
 							<ul class="icons">
-								<li><a href="https://www.twitter.com/aetheros" class="fa-twitter">Twitter</a></li>
-								<li><a href="https://www.linkedin.com/in/hchuynh" class="fa-linkedin">Linkedin</a></li>
-								<li><a href="https://www.facebook.com/hoang.c.huynh" class="fa-facebook">Facebook</a></li>
+								<li><a href="https://www.twitter.com/{{ info.social.twitter }}" class="fa fa-twitter">Twitter</a></li>
+								<li><a href="https://www.linkedin.com/in/{{ info.social.linkedin }}" class="fa fa-linkedin">Linkedin</a></li>
+								<li><a href="https://www.facebook.com/{{ info.social.facebook }}" class="fa fa-facebook">Facebook</a></li>
 							</ul>
 						</footer>
 					</section>

@@ -87,73 +87,43 @@ class Frontend extends ConfigurableBase
      * HH START
      */
 
-    /**
-     * HH
-     ** Controller for the "Handler" route. 
-     * 
-     *
-     * @return BoltResponse
-     */
-    public function nctd_homepage()
-    {
-        // testing against regular homepage content we might want to incliude posts on the main page
-        $content = $this->getContent($this->getOption('general/nctd_homepage'));
-
-        // TODO DISPATCHER SERVCIE
-
-        $template = $this->templateChooser()->nctd_homepage($content);
-        // saving rawcontent for debug purpose
-        $globals = [
-            'rawcontent' => $content,
-        ];
-
-        //regular homepage content testing
-        if (is_array($content)) {
-            $globals = [
-                'records' => $content,
-            ];
-            $first = current($content);
-            $globals[$first->contenttype['slug']] = $content;
-        } elseif (!empty($content)) {
-            $globals = [
-                'records' => $content,
-            ];
-            $globals['record'] = $content;
-            $globals[$content->contenttype['singular_slug']] = $content;
-        } else {
-        // Nothing returned? well, it's an handler!
-           // $template = $this->templateChooser()->nctd_handler($content);
-           // $globals = [
-        //   'handle' => $content,
-           // ];
-        }
-
-
-        return $this->render($template, [], $globals);
-    }
-
-    # PUPPA CODE: BE AWESOME
-    public function nctd_puppa() { return $this->render('puppa.twig'); }
-
 
     # Pretotyping test
-    public function nctd_card() { return $this->render('web-cards/card.twig'); }
-    
+    public function nctd_card(Request $request, $handler) {
+        $template = $this->templateChooser()->nctd_card();
+
+        $info = $this->app['nectd_handler']->resolve($handler);
+
+        return $this->render($template, [ 'info' => $info ], []);
+    }
+
 
     /**
      * HH END
      */
 
     /**
-     * Controller for the "Homepage" route. Usually the front page of the website.
+     * Controller for the "Homepage" route.
      *
      * @return BoltResponse
      */
     public function homepage()
     {
-        $content = $this->getContent($this->getOption('general/homepage'));
+        $template = $this->templateChooser()->homepage();
 
-        $template = $this->templateChooser()->homepage($content);
+        return $this->render($template, [], []);
+    }
+
+    /**
+     * Controller for the "blog" route.
+     *
+     * @return BoltResponse
+     */
+    public function blog()
+    {
+        $content = $this->getContent($this->getOption('general/blog'));
+
+        $template = $this->templateChooser()->blog($content);
 
         $globals = [
             'records' => $content,
@@ -208,10 +178,10 @@ class Frontend extends ConfigurableBase
         // No content, no page!
         if (!$content) {
             // HH START
-            
+
             //$this->abort(Response::HTTP_NOT_FOUND, "Page $contenttypeslug/$slug not found.");
             //return null;
-            
+
             // We are here, no match for the static pages, it should be an handle.
             // We need to redirect to our handle controller
             $template = $this->templateChooser()->nctd_handler($content);

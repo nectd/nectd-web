@@ -56,10 +56,10 @@
 # we redirect to the nctd_homepage page
 # in the nctd_homepage controller we will check for logged in users.
 
-nctd_homepage:
+homepage:
     path: /
     defaults:
-        _controller: controller.frontend:nctd_homepage
+        _controller: controller.frontend:homepage
 
 
 
@@ -67,13 +67,14 @@ nctd_homepage:
 puppa:
     path: /puppa
     defaults:
-        _controller: controller.frontend:nctd_puppa
+        _controller: controller.frontend:template
+        template: puppa
 # BE AWESOME!
 
-homepage:
+blog:
     path: /blog
     defaults:
-        _controller: controller.frontend:homepage
+        _controller: controller.frontend:blog
 
 search:
     path: /blog/search
@@ -110,9 +111,11 @@ contentlisting:
 
 #HH Pretotyping Test
 card:
-    path: /hoanghuynh
+    path: /{handler}
     defaults:
         _controller: controller.frontend:nctd_card
+    requirements:
+        handler: (?:hoanghuynh|hh|maxart)
 
 
 # HH END
@@ -122,19 +125,19 @@ card:
 
 # HH Hack to display /{contenttypeslug}/{slug} static pages, directly to /{slug}
 
-pagebinding:
-  path: /{slug}
-  defaults: { _controller: 'Bolt\Controllers\Frontend::record', 'contenttypeslug': 'page' }
-  contenttype: pages
+# pagebinding:
+#   path: /{slug}
+#   defaults: { _controller: 'Bolt\Controllers\Frontend::record', 'contenttypeslug': 'page' }
+#   contenttype: pages
 
 # HH Hack to display the date in the permalink of entries
 
 entrybinding:
-  path:           /blog/{datecreated}/{slug}
-  defaults:       { _controller: 'Bolt\Controllers\Frontend::record', 'contenttypeslug': 'entry' }
-  requirements:
-    datecreated:    '\d{4}-\d{2}-\d{2}'
-  contenttype:    entries
+    path:           /blog/{datecreated}/{slug}
+    defaults:       { _controller: 'Bolt\Controllers\Frontend::record', 'contenttypeslug': 'entry' }
+    requirements:
+        datecreated:    '\d{4}-\d{2}-\d{2}'
+    contenttype:    entries
 
 
 

@@ -74,14 +74,17 @@ cron_hour: 3
 # Note: If you've changed the filename, and your changes do not show up on
 #       the website, be sure to check for a config.yml file in your theme's
 #       folder. If a template is set there, it will override the setting here.
-homepage: page/1
-homepage_template: blog.twig
+# homepage: page/1
+# homepage_template: blog.twig
+homepage_template: old_web/index.twig
 
 # HH nectd services
-nctd_homepage_template: old_web/index.twig
+# nctd_homepage_template: old_web/index.twig
 nctd_handler_template: nctd_handler.twig
+nctd_card_template: web-cards/card.twig
 
-
+blog: page/1
+blog_template: blog.twig
 
 
 # The default content for the 404 page. Uses the 'record_template' template by

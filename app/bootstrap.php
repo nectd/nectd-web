@@ -66,6 +66,10 @@ return call_user_func(
         // Initialize the 'Bolt application': Set up all routes, providers, database, templating, etc..
         $app->initialize();
 
+        require "$boltRootPath/src/Provider/NectdHandlerManagerProvider.php";
+        require "$boltRootPath/src/Nectd/HandlerManager.php";
+        $app->register(new \Nectd\Provider\NectdHandlerManagerProvider());
+
         return $app;
     }
 );

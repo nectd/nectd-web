@@ -50,6 +50,9 @@ return call_user_func(
             );
         }
 
+        // Add Nectd autoloader
+        require 'nectd_autoload.php';
+
         // Register a PHP shutdown function to catch early fatal errors
         register_shutdown_function(['\Bolt\Exception\LowlevelException', 'catchFatalErrorsEarly']);
 
@@ -65,6 +68,9 @@ return call_user_func(
 
         // Initialize the 'Bolt application': Set up all routes, providers, database, templating, etc..
         $app->initialize();
+
+        $nectd = new \Nectd\Application($app);
+        $nectd->initialize();
 
         return $app;
     }

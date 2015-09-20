@@ -115,7 +115,7 @@ card:
     defaults:
         _controller: controller.frontend:nctd_card
     requirements:
-        handler: (?:hoanghuynh|hh|maxart)
+        handler: (?:hoanghuynh|hh|maxart|homie)
 
 
 # HH END

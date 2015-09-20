@@ -44,5 +44,5 @@ if (php_sapi_name() === 'cli-server') {
 /**
  * @var \Bolt\Application $app
  */
-$app = require_once __DIR__ . '/app/bootstrap.php';
+$app = require_once __DIR__ . '/app/nectd_bootstrap.php';
 $app->run();

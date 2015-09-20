@@ -1,8 +1,8 @@
 <?php
-
-namespace Bolt\Controller;
+namespace Nectd\Controller;
 
 use Bolt\Asset\Target;
+use Bolt\Controller\Frontend as BoltFrontent;
 use Bolt\Helpers\Input;
 use Bolt\Pager;
 use Bolt\Response\BoltResponse;
@@ -22,76 +22,44 @@ use utilphp\util;
  * http://docs.bolt.cm/templates-routes#routing or the routing.yml
  * file in your configuration.
  */
-class Frontend extends ConfigurableBase
+class Frontend extends BoltFrontend
 {
-    protected function getConfigurationRoutes()
-    {
-        return $this->app['config']->get('routing', []);
+    # Pretotyping test
+    public function nctd_card(Request $request, $handler) {
+        $template = $this->templateChooser()->nctd_card();
+
+        $info = $this->app['nectd_handler']->resolve($handler);
+
+        return $this->render($template, [ 'info' => $info ], []);
     }
 
-    protected function addRoutes(ControllerCollection $c)
-    {
-        $c->value(Zone::KEY, Zone::FRONTEND);
-        parent::addRoutes($c);
-    }
 
     /**
-     * The default before filter for the controllers in this file.
-     *
-     * Refer to the routing.yml config file for overridding.
-     *
-     * @param Request $request The Symfony Request
-     *
-     * @return null|BoltResponse|RedirectResponse
+     * HH END
      */
-    public function before(Request $request)
-    {
-        // Start the 'stopwatch' for the profiler.
-        $this->app['stopwatch']->start('bolt.frontend.before');
-
-        // If there are no users in the users table, or the table doesn't exist. Repair
-        // the DB, and let's add a new user.
-        if (!$this->app['users']->getUsers()) {
-            $this->flashes()->info(Trans::__('There are no users in the database. Please create the first user.'));
-
-            return $this->redirectToRoute('useredit', ['id' => '']);
-        }
-
-        // If we are in maintenance mode and current user is not logged in, show maintenance notice.
-        if ($this->getOption('general/maintenance_mode')) {
-            if (!$this->isAllowed('maintenance-mode')) {
-                $template = $this->templateChooser()->maintenance();
-                $response = $this->render($template);
-                $response->setStatusCode(Response::HTTP_SERVICE_UNAVAILABLE);
-                return $response;
-            }
-        }
-
-        // If we have a valid cache respose, return it.
-        if ($response = $this->app['render']->fetchCachedRequest()) {
-            // Stop the 'stopwatch' for the profiler.
-            $this->app['stopwatch']->stop('bolt.frontend.before');
-
-            // Short-circuit the request, return the HTML/response. YOLO.
-            return $response;
-        }
-
-        // Stop the 'stopwatch' for the profiler.
-        $this->app['stopwatch']->stop('bolt.frontend.before');
-
-        return null;
-    }
 
     /**
-     * Controller for the "Homepage" route. Usually the front page of the website.
+     * Controller for the "Homepage" route.
      *
      * @return BoltResponse
      */
     public function homepage()
     {
-        $content = $this->getContent($this->getOption('general/homepage'));
+        $template = $this->templateChooser()->homepage();
 
-        $template = $this->templateChooser()->homepage($content);
+        return $this->render($template, [], []);
+    }
+
+    /**
+     * Controller for the "blog" route.
+     *
+     * @return BoltResponse
+     */
+    public function blog()
+    {
+        $content = $this->getContent($this->getOption('general/blog'));
+
+        $template = $this->templateChooser()->blog($content);
 
         $globals = [
             'records' => $content,
@@ -119,6 +87,7 @@ class Frontend extends ConfigurableBase
      */
     public function record(Request $request, $contenttypeslug, $slug = '')
     {
+        $rawcontent = $slug;
         $contenttype = $this->getContentType($contenttypeslug);
 
         // If the contenttype is 'viewless', don't show the record page.
@@ -144,8 +113,22 @@ class Frontend extends ConfigurableBase
 
         // No content, no page!
         if (!$content) {
-            $this->abort(Response::HTTP_NOT_FOUND, "Page $contenttypeslug/$slug not found.");
-            return null;
+            // HH START
+
+            //$this->abort(Response::HTTP_NOT_FOUND, "Page $contenttypeslug/$slug not found.");
+            //return null;
+
+            // We are here, no match for the static pages, it should be an handle.
+            // We need to redirect to our handle controller
+            $template = $this->templateChooser()->nctd_handler($content);
+            $paths = $this->app['resources']->getPaths();
+            $globals = [
+                'handle' => $rawcontent
+            ];
+
+            return $this->render($template, [], $globals);
+
+            // HH END
         }
 
         // Then, select which template to use, based on our 'cascading templates rules'

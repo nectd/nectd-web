@@ -1,0 +1,6 @@
+body {
+    background-color: $main-background;
+    color: contrast-color($main-background);
+    font-size: $font-base-size;
+    font-family: $font-sans-serif;
+}

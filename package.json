@@ -1,0 +1,36 @@
+{
+  "name": "nectd-web",
+  "version": "0.0.1",
+  "description": "Nectd institutional website",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nectd/nectd-web.git"
+  },
+  "keywords": [
+    "nectd"
+  ],
+  "author": "Nectd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nectd/nectd-web/issues"
+  },
+  "homepage": "https://github.com/nectd/nectd-web#readme",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "font-awesome": "^4.4.0",
+    "react": "^0.13.3"
+  }
+}

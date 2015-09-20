@@ -2,7 +2,7 @@
 namespace Nectd\Controller;
 
 use Bolt\Asset\Target;
-use Bolt\Controller\Frontend as BoltFrontent;
+use Bolt\Controller\Frontend as BoltFrontend;
 use Bolt\Helpers\Input;
 use Bolt\Pager;
 use Bolt\Response\BoltResponse;

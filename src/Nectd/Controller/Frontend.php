@@ -24,6 +24,16 @@ use utilphp\util;
  */
 class Frontend extends BoltFrontend
 {
+    /**
+     * Return the Nectd\TemplateChooser provider.
+     *
+     * @return \Nectd\TemplateChooser
+     */
+    protected function templateChooser()
+    {
+        return $this->app['nectd_templatechooser'];
+    }
+
     # Pretotyping test
     public function nctd_card(Request $request, $handler) {
         $template = $this->templateChooser()->nctd_card();

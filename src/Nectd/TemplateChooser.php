@@ -1,6 +1,7 @@
 <?php
+namespace Nectd;
 
-namespace Bolt;
+use Bolt\Application as BoltApp;
 
 /**
  * A class for choosing whichever template should be used.
@@ -15,32 +16,57 @@ class TemplateChooser
      *
      * @param Application $app
      */
-    public function __construct(Application $app)
+    public function __construct(BoltApp $app)
     {
         $this->app = $app;
     }
 
+
+    /**
+     * HH START
+     * MaxArt continues
+     */
+
+    /**
+     * Fallback template request
+     */
+    public function __call($name, $arguments)
+    {
+        return $this->getTemplate($name);
+    }
+
+    /**
+     * HH
+     * Template for Handler page
+     *
+     * @return string
+     */
+    public function nctd_handler()
+    {
+        return $this->getTemplate('nctd_handler', 'nctd_handler');
+    }
+
+
     /**
      * Choose a template for the homepage.
+     *
+     * @return string
+     */
+    public function homepage()
+    {
+        return $this->getTemplate('homepage', 'index');
+    }
+
+    /**
+     * Choose a template for the blog.
      *
      * @param \Bolt\Legacy\Content|\Bolt\Legacy\Content[] $content
      *
      * @return string
      */
-    public function homepage($content)
+    public function blog($content)
     {
-        // First candidate: Global config.yml file.
-        $template = $this->app['config']->get('general/homepage_template');
-
-        // Second candidate: Theme-specific config.yml file.
-        if ($this->app['config']->get('theme/homepage_template')) {
-            $template = $this->app['config']->get('theme/homepage_template');
-        }
-
-        // Fallback if no content: index.twig
-        if (empty($content) && empty($template)) {
-                $template = 'index.twig';
-        }
+        $template = $this->getTemplate('blog', empty($content) ? 'blog' : null);
 
         // Fallback with content: use record() or listing() to choose template
         if (empty($template)) {
@@ -54,6 +80,10 @@ class TemplateChooser
             return $template;
         }
     }
+
+    /**
+     * HH END
+     */
 
     /**
      * Choose a template for a single record page, e.g.:
@@ -143,20 +173,7 @@ class TemplateChooser
      */
     public function taxonomy($taxonomyslug)
     {
-        // First candidate: Global config.yml
-        $template = $this->app['config']->get('general/listing_template');
-
-        // Second candidate: Theme-specific config.yml file.
-        if ($this->app['config']->get('theme/listing_template')) {
-            $template = $this->app['config']->get('theme/listing_template');
-        }
-
-        // Third candidate: defined specifically in the taxonomy
-        if ($this->app['config']->get('taxonomy/' . $taxonomyslug . '/listing_template')) {
-            $template = $this->app['config']->get('taxonomy/' . $taxonomyslug . '/listing_template');
-        }
-
-        return $template;
+        return $this->app['config']->get("taxonomy/$taxonomyslug/listing_template", $this->getTemplate('listing'));
     }
 
     /**
@@ -166,20 +183,7 @@ class TemplateChooser
      */
     public function search()
     {
-        // First candidate: listing config setting.
-        $template = $this->app['config']->get('general/listing_template');
-
-        // Second candidate: specific search setting in global config.
-        if ($this->app['config']->get('general/search_results_template')) {
-            $template = $this->app['config']->get('general/search_results_template');
-        }
-
-        // Third candidate: specific search setting in global config.
-        if ($this->app['config']->get('theme/search_results_template')) {
-            $template = $this->app['config']->get('theme/search_results_template');
-        }
-
-        return $template;
+        return $this->getTemplate('search_results', $this->app['config']->get('general/listing_template'));
     }
 
     /**
@@ -189,14 +193,29 @@ class TemplateChooser
      */
     public function maintenance()
     {
-        // First candidate: global config.
-        $template = $this->app['config']->get('general/maintenance_template');
+        return $this->getTemplate('maintenance');
+    }
 
-        // Second candidate: specific search setting in global config.
-        if ($this->app['config']->get('theme/maintenance_template')) {
-            $template = $this->app['config']->get('theme/maintenance_template');
+    /**
+     * Return a template with a given name, checking the current theme, then the general settings.
+     *
+     * @param string $name
+     *
+     * @param string $default = null
+     *
+     * @return string
+     */
+    protected function getTemplate($name, $default = null)
+    {
+        $template = $this->app['config']->get("theme/{$name}_template");
+        if (empty($template)) {
+            // First fallback: global config.yml
+            $template = $this->app['config']->get("general/{$name}_template");
         }
-
+        if (empty($template) && $default) {
+            // Second fallback
+            $template = $default;
+        }
         return $template;
     }
 }

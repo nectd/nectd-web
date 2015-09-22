@@ -445,4 +445,12 @@ class Frontend extends BoltFrontend
 
         return $this->render($template);
     }
+
+    public function mockup(Request $request, $name)
+    {
+        $tpl = "mockup_$name";
+        $template = $this->templateChooser()->{$tpl}();
+
+        return $this->render($template, [], array( 'name' => $name ));
+    }
 }

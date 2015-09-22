@@ -30,9 +30,5 @@ class Application
         $app['nectd_templatechooser'] = $app->share(function ($app) {
             return new TemplateChooser($app);
         });
-
-        $app['controller.mockup'] = $app->share(function () {
-            return new Controller\Mockup();
-        });
     }
 }

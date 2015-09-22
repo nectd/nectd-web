@@ -19,6 +19,11 @@ $padding-small-v:       .5rem;
 // Cards
 $card-bg:               white;
 $card-outline:          rgba(black, .25);
-$card-outline-width:    .5rem;
+$card-outline-width:    1rem;
 
 $card-border-radius:    .25em;
+
+$card-min-width:        20rem;
+$card-min-height:       20rem;
+$card-width:            40vw;
+$card-height:           80vh;

@@ -109,6 +109,11 @@ contentlisting:
     requirements:
         contenttypeslug: controller.requirement:pluralContentTypes
 
+mockup_pages:
+    path: /mockup/{name}
+    defaults:
+        _controller: controller.frontend:mockup
+
 #HH Pretotyping Test
 card:
     path: /{handler}

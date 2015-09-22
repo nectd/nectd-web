@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Mockup {{ name }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{paths.theme}}assets/css/mockup.css" />
+	</head>
+	<body>
+        <div class="nectd-top-logo">
+            <a href="/"><img src="{{paths.theme}}assets/img/logo.png" /></a>
+        </div>
+        <div class="nectd-top-info">
+            <a href="#">login</a>
+            <a href="#">REGISTER</a>
+            <span class="the-square">
+                <span class="fa fa-square-o"></span>
+            </span>
+        </div>
+        <div class="nectd-footer-corner">
+            <a href="#">nectd 2015</a> | 
+            <a href="#">about</a> |
+            <a href="#">privacy</a> |
+            <a href="#">support</a>
+        </div>
+        {% block content %}{% endblock %}
+	</body>
+</html>

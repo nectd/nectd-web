@@ -1,0 +1,25 @@
+@mixin flex-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin card-size($size) {
+    $sizes: map-get($card-sizes, $size);
+    @if $sizes {
+        min-width: map-get($sizes, min-width);
+        min-height: map-get($sizes, min-height);
+        width: map-get($sizes, width);
+        height: map-get($sizes, height);
+
+        &::before {
+            font-size: map-get($sizes, font-base) * 2;
+        }
+    }
+}

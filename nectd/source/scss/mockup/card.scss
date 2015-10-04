@@ -1,0 +1,90 @@
+.nectd-card-list {
+    @include flex-middle;
+    text-align: center;
+    height: 100%;
+}
+
+.nectd-card, .nectd-presenter {
+    @extend .nectd-container-wrapper;
+}
+.nectd-card-body {
+    @extend .nectd-container;
+    @include card-size(huge);
+    padding: $padding-large-v $padding-large-h;
+
+    display: flex;
+    align-items: center;
+    &::before {
+        content: "handle";
+        text-transform: uppercase;
+        color: rgba(black, .5);
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 5em;
+    }
+}
+
+.nectd-presentation {
+    @include flex-middle;
+    position: relative;
+    top: 20%;
+    height: 80%;
+
+    .nectd-card {
+        margin: 0;
+        animation: present-left 1s forwards;
+
+        & + .nectd-card {
+            animation: present-right 1s forwards;
+        }
+    }
+    .nectd-card-body {
+        @include card-size(big);
+    }
+
+    .nectd-presenter {
+        position: absolute;
+        top: -30vh;
+        left: 50%;
+        animation: present-top 1s forwards;
+        margin: 0;
+
+        > .nectd-card-body {
+            width: 30vw;
+            height: 10vh;
+            min-height: 0;
+
+            &::before {
+                content: "presenter";
+            }
+        }
+    }
+}
+
+@keyframes present-left {
+    from {
+        transform: translate(50%, 0) rotate(0deg);
+    }
+    to {
+        transform: translate(-20%, 0) rotate(-10deg);
+    }
+}
+
+@keyframes present-right {
+    from {
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+    to {
+        transform: translate(20%, 0) rotate(10deg);
+    }
+}
+
+@keyframes present-top {
+    from {
+        transform: translate(-50%, 0);
+    }
+    to {
+        transform: translate(-50%, 25vh);
+    }
+}

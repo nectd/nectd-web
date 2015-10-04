@@ -1,0 +1,48 @@
+.nectd-container-wrapper {
+    border-radius: $card-border-radius;
+    box-shadow: 0 0 0 $card-outline-width $card-outline;
+    margin: $card-outline-width * 1.5;
+    background: $card-outline;
+    display: inline-block;
+}
+.nectd-container {
+    border-radius: $card-border-radius;
+    background: $card-bg;
+}
+
+.nectd-top-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: $padding-large-v $padding-large-h;
+
+    img { height: 2rem; }
+}
+.nectd-top-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: $padding-large-v $padding-large-h;
+    color: white;
+
+    > * {
+        float: left;
+        margin: 0 $padding-base-h;
+        font-size: 1.8em;
+        font-weight: 100;
+    }
+    > .the-square {
+        border-left: 1px solid;
+        padding-left: $padding-base-h;
+    }
+}
+.nectd-footer-corner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 80%;
+    margin: $padding-large-v $padding-large-h;
+    padding: $padding-small-v $padding-small-h;
+    background: $card-outline;
+    border-radius: $card-border-radius;
+}

@@ -1,0 +1,41 @@
+$font-base-size:        16px;
+
+$font-sans-serif:       "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+$font-serif:            Times, "Times New Roman", serif;
+
+$main-background:       hsl(355, 67%, 39%);
+
+$dark-text:             #333;
+$light-text:            white;
+
+$padding-base-h:        1rem;
+$padding-base-v:        .667rem;
+$padding-large-h:       1.5rem;
+$padding-large-v:       1rem;
+$padding-small-h:       .75rem;
+$padding-small-v:       .5rem;
+
+
+// Cards
+$card-bg:               white;
+$card-outline:          rgba(black, .25);
+$card-outline-width:    1em;
+
+$card-border-radius:    .25em;
+
+$card-sizes: (
+    huge: (
+        min-width:      24rem,
+        min-height:     32rem,
+        width:          30vw,
+        height:         80vh,
+        font-base:      2.5rem
+    ),
+    big: (
+        min-width:      18rem,
+        min-height:     24rem,
+        width:          15vw,
+        height:         40vh,
+        font-base:      1.5rem
+    )
+);

@@ -69,7 +69,8 @@
     "prefer-stable" : true,
     "autoload" : {
         "psr-4" : {
-            "Bolt\\" : "src"
+            "Bolt\\" : "src",
+            "Nectd\\" : "src/Nectd"
         },
         "files" : [
             "app/deprecated.php"

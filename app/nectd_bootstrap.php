@@ -50,9 +50,6 @@ return call_user_func(
             );
         }
 
-        // Add Nectd autoloader
-        require 'nectd_autoload.php';
-
         // Register a PHP shutdown function to catch early fatal errors
         register_shutdown_function(['\Bolt\Exception\LowlevelException', 'catchFatalErrorsEarly']);
 

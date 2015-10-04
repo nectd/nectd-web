@@ -1,3 +1,0 @@
-@function contrast-color($color) {
-    @return if(lightness($color) > 70%, $dark-text, $light-text);
-}

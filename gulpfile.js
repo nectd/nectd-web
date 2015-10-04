@@ -1,30 +1,75 @@
 var gulp = require("gulp");
 
-var themeDir = "theme/nectd-2015/";
-var themeOutDir = themeDir + "web-cards/assets/";
+var sourceDir = "nectd/source/",
+    thereDir = "theme/nectd-2015/",
+    outDir = "web/assets/";
 
-var assetMap = {
-    "web-cards": "nectd",
-    mockup: "mockup"
-};
+var minifyCss = require("gulp-minify-css");
+var sourcemaps = require("gulp-sourcemaps");
+var rename = require("gulp-rename");
 
 gulp.task("scss", function () {
     var sass = require("gulp-sass");
 
-    gulp.src(themeDir + "scss/*.scss")
+    gulp.src(sourceDir + "scss/*.scss")
         .pipe(sass().on("error", sass.logError))
-        .pipe(gulp.dest(themeDir + "assets/css"));
+        .pipe(minifyCss())
+        .pipe(gulp.dest(outDir + "css"));
 });
 
 gulp.task("fonts", function() {
     gulp.src("node_modules/font-awesome/fonts/*")
-        .pipe(gulp.dest(themeDir + "assets/fonts"));
+        .pipe(gulp.dest(outDir + "fonts"));
 });
 
-var watch = require('gulp-watch');
+gulp.task("bolt-js", function() {
+    var uglify = require("gulp-uglify");
+
+    gulp.src(thereDir + "**/*.{js,htc}")
+        .pipe(rename({ dirname: "" }))
+        // .pipe(uglify())
+        .pipe(gulp.dest(outDir + "js"));
+});
+
+gulp.task("bolt-css", function() {
+    var uglify = require("gulp-uglify");
+
+    gulp.src(thereDir + "**/*.css")
+        .pipe(rename({ dirname: "" }))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(outDir + "css"));
+});
+
+gulp.task("bolt-img", function() {
+    var imagemin = require("gulp-imagemin");
+
+    gulp.src(thereDir + "**/*.{jpg,png,gif}")
+        .pipe(rename({ dirname: "" }))
+        .pipe(imagemin())
+        .pipe(gulp.dest(outDir + "img"));
+});
+
+gulp.task("bolt-stuff", [ "bolt-css", "bolt-js", "bolt-img" ], function() {
+    gulp.src(thereDir + "old_web/fonts/*")
+        .pipe(gulp.dest(outDir + "fonts"));
+    gulp.src(thereDir + "web-cards/assets/css/images/*")
+        .pipe(gulp.dest(outDir + "css/images"));
+});
+
+gulp.task("avatars", function() {
+    var imagemin = require("gulp-imagemin");
+
+    gulp.src("nectd/avatars/*.{jpg,png,gif}")
+        .pipe(imagemin())
+        .pipe(gulp.dest("web/avatars/"));
+})
+
+var watch = require("gulp-watch");
 
 gulp.task("watch-scss", function() {
-    watch(themeDir + "scss/**/*.scss", function() {
+    watch(sourceDir + "scss/**/*.scss", function() {
         gulp.start("scss");
     });
 });
+
+gulp.task("build", [ "bolt-stuff", "scss", "fonts", "avatars" ]);

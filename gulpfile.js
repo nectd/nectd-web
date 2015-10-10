@@ -1,8 +1,8 @@
 var gulp = require("gulp");
 
-var sourceDir = "nectd/source/",
-    thereDir = "theme/nectd-2015/",
-    outDir = "web/assets/";
+var sourceDir = "./nectd/source/",
+    thereDir = "./theme/nectd-2015/",
+    outDir = "./web/assets/";
 
 var minifyCss = require("gulp-minify-css");
 var sourcemaps = require("gulp-sourcemaps");

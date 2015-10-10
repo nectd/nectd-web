@@ -53,6 +53,7 @@ return call_user_func(
         // Register a PHP shutdown function to catch early fatal errors
         register_shutdown_function(['\Bolt\Exception\LowlevelException', 'catchFatalErrorsEarly']);
 
+        $config->getVerifier()->disableApacheChecks();
         $config->setPath('web', "$boltRootPath/web");
         $config->setPath('webpath', "$boltRootPath/web");
         /** @var \Bolt\Configuration\ResourceManager $config */

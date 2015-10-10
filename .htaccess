@@ -23,15 +23,16 @@ Options -Indexes
   RewriteEngine on
 
   RewriteRule cache/ - [F]
+  
+  RewriteRule ^(?!web/)(.*) web/$1
 
   # Some servers require the RewriteBase to be set. If so, set to the correct folder.
-  # RewriteBase /
+  # RewriteBase /web/
 
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
-  RewriteRule ^ ./index.php [L]
-
+  RewriteRule ^ web/index.php [L,NC]
 </IfModule>
 
 

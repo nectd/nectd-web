@@ -1,5 +1,5 @@
 vendor/
 node_modules/
 app/cache/
-web/assets/
-web/avatars/
+www/assets/
+www/avatars/

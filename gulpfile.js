@@ -4,9 +4,23 @@ var sourceDir = "./nectd/source/",
     thereDir = "./theme/nectd-2015/",
     outDir = "./web/assets/";
 
+var static = {
+    sourceDir : "./nectd/source/",
+    outDir : "./static/nectd/assets/"
+}
+
 var minifyCss = require("gulp-minify-css");
 var sourcemaps = require("gulp-sourcemaps");
 var rename = require("gulp-rename");
+
+gulp.task("static", function () {
+    var sass = require("gulp-sass");
+
+    gulp.src(static.sourceDir + "scss/*.scss")
+        .pipe(sass().on("error", sass.logError))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(static.outDir + "css"));
+});
 
 gulp.task("scss", function () {
     var sass = require("gulp-sass");
@@ -72,4 +86,10 @@ gulp.task("watch-scss", function() {
     });
 });
 
-gulp.task("build", [ "bolt-stuff", "scss", "fonts", "avatars" ]);
+gulp.task("watch-static", function() {
+    watch(sourceDir + "scss/**/*.scss", function() {
+        gulp.start("static");
+    });
+});
+
+gulp.task("build", [ "bolt-stuff", "scss", "fonts", "avatars", "static" ]);

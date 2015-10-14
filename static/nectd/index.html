@@ -35,6 +35,7 @@ Author URL: http://nectd.com
 		<link href="assets/css/vendor/owl.carousel.css" rel="stylesheet">
 		<link href="assets/css/vendor/owl.theme.css" rel="stylesheet">
 		<link href="assets/css/vendor/owl.transitions.css" rel="stylesheet">
+		<link href="assets/css/vendor/gravitons.min.css" rel="stylesheet">
 		<link href="assets/css/nectd.css" rel="stylesheet">
 
 		<!-- Facebook and Twitter integration -->
@@ -63,6 +64,7 @@ Author URL: http://nectd.com
 		<![endif]-->
 		<!-- open/close -->
 
+		<!--  START navbar  -->
         <nav class="navbar navbar-default">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,7 +78,6 @@ Author URL: http://nectd.com
               <a class="navbar-brand" href="/"><img src="assets/img/logo.png" alt="nectd"></a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="main_nav_collapse">
               <div class="navbar-right nav-button">
                   <button class="navbar-btn btn btn-primary btn-lg btn-block wow fadeInRight" data-wow-delay="0.6s">sign in</button>
@@ -87,12 +88,12 @@ Author URL: http://nectd.com
                 <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="/developers">Developers</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="https://slack.zendesk.com/hc/en-us">Support</a></li>
               </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
+            </div>
+          </div>
         </nav>
+		<!--  END navbar  -->
 
-
-
+		<!--  START Hero Slider  -->
         <header class="slider-area">
 
             <div class="slider">
@@ -105,19 +106,15 @@ Author URL: http://nectd.com
 
             <div class="container slider-content">
                 <div class="row">
-                    <div class="col-lg-6 col-md-10 col-sm-12">
+                    <div class="col-md-7 col-md-offset-1">
                         <h2>Connecting People</h2>
                         <h2>Just Got Easy</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
-                        <div class="search-form wow pulse" data-wow-delay="0.8s">
+                        <div class="search-form wow pulse card" data-wow-delay="0.8s">
                             <form action="" class=" form-inline">
-                            <div class="form-group">
-                                    <!--input type="text" class="form-control" placeholder="Search for a handle nickname or a name">
-                                </div>
-                                <input type="submit" class="btn" value="Search"-->
-                            	
+                            <div class="form-group">                            	
                                 <div class="input-group">
-							      <input type="text" class="form-control searchbar-input" placeholder="Search for handle nicknames or names...">
+							      <input id="searchinput" name="searchinput" type="text" class="form-control searchbar-input" placeholder="Search for handle nicknames or names...">
 							      <span class="input-group-btn">
 							        <button class="btn btn-primary searchbar-action" type="button">search</button>
 							      </span>
@@ -129,6 +126,7 @@ Author URL: http://nectd.com
             </div>
 
         </header>
+		<!--  END Hero Slider  -->
 
         <!--  START Steps  -->
 		<section class="steps">
@@ -136,42 +134,186 @@ Author URL: http://nectd.com
 				<div class="row">
 					<div class="step-grid">
 						<div class="img-container">
-							<img src="img/watch-img.png" title="Get">
+							<img src="img/step_1.jpg" title="Get" class="wow bounceIn" data-wow-delay="0.1s" data-wow-offset="200">
 						</div>
-						<span><label>1</label></span>
-						<div class="borderline"> </div>
-						<a href="/signin">Get a public profile</a>
+						<span class="wow bounceIn" data-wow-delay="0.1s"><label>1</label></span>
+						<div class="borderline wow bounceIn" data-wow-delay="0.5s"> </div>
+						<a href="/signin" class="wow bounceIn" data-wow-delay="0.1s">Get a public profile</a>
 					</div>
 					<div class="step-grid">
 						<div class="img-container">
-							<img src="img/shoe-img.png" title="Create">
+							<img src="img/shoe-img.png" title="Create" class="wow bounceIn" data-wow-delay="1.0s" data-wow-offset="200">
 						</div>
-						<span><label>2</label></span>
-						<div class="borderline"> </div>
-						<a href="/signin">Create a contact channel</a>
+						<span class="wow bounceIn" data-wow-delay="1.0s"><label>2</label></span>
+						<div class="borderline wow bounceIn" data-wow-delay="1.5s"> </div>
+						<a href="/signin" class="wow bounceIn" data-wow-delay="1.0s">Create a contact channel</a>
 					</div>
 					<div class="step-grid">
 						<div class="img-container">
-							<img src="img/lap-img.png" title="Share">
+							<img src="img/lap-img.png" title="Share" class="wow bounceIn" data-wow-delay="2.0s" data-wow-offset="200">
 						</div>
-						<span><label>3</label></span>
-						<a href="/signin">Share with the team</a>
+						<span class="wow bounceIn" data-wow-delay="2.0s"><label>3</label></span>
+						<a href="/signin" class="wow bounceIn" data-wow-delay="2.0s">Share with the world</a>
 					</div>
 				</div>
 			</div>
 		</section>
-		<!--  END Steps  -->
+		<!--  END STEPS  -->
+
+		<!--  START ENGAGE  -->
+		<section class="engage" >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="card wrapper">
+						
+							<div id="shortFeatures" class="owl-carousel owl-theme">
+								<a href="/features">Introduce people to each other</a>
+								<a href="/features">Exchange contact details</a>
+								<a href="/features">Present yourself</a>
+								<a href="/features">Publish your public details to be findable</a>
+								<a href="/features">Get finally rid of intranet address books</a>
+								<a href="/features">Connect every team member and collegues</a>
+								<a href="/features">Setup a public handle for your business</a>
+								<a href="/features" class="small">Replace your address book with something smarter</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="card center">
+							<a href="/signin" class="btn btn-primary btn-lng btn-block">JOIN, It's Free!</a>
+							<p class="fineprint"> Yeah, we mean FOREVER!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--  END ENGAGE  -->
+
+
+		<!--  START PREVIEW  -->
+		<section class="previews" >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>What's Hot</h2>
+
+	               		<div class="wrapper py3 mb3">
+	                  
+	                  		<article class="channel_preview_box col-sm-4 wow fadeInRight" data-wow-delay="0.1s">
+			                    <div class="img-preview">
+			                        <img src="img/slider-image-1.jpg" alt="preview">
+			                    </div>
+			                    <div class="img-avatar">
+			                        <img src="img/slider-image-1.jpg" alt="avatar">
+			                    </div>
+			                    <h3>@ nectd : team</h3>
+			                    <div class="content">
+			                    	<p>This is the team of nectd. We are cool guys, get in touch if you want to know what we are doing.</p>
+			                    </div>
+			                    <ul class="tags">
+			                    	<li class="tag"><a href="#">nectd</a></li>
+			                    	<li class="tag"><a href="#">team</a></li>
+			                    </ul>
+			                    <footer class="separator-top">
+			                        <a href="#" class="btn btn-lg btn-primary">See</a>
+			                        <a href="#" class="people"><i class="fa fa-user"></i> 30</a>
+			                    </footer>
+			                </article>
+
+	                  		<article class="channel_preview_box col-sm-4 wow fadeInRight" data-wow-delay="0.8s">
+			                    <div class="img-preview">
+			                        <img src="img/slider-image-3.jpg" alt="preview">
+			                    </div>
+			                    <div class="img-avatar">
+			                        <img src="img/slider-image-3.jpg" alt="avatar">
+			                    </div>
+			                    <h3>@ mariorossi</h3>
+			                    <div class="content">
+			                    	<p>Hi, I am Mario and I am a designer. I am freelancing, drop me a line if you want to work with me!</p>
+			                    </div>
+			                    <ul class="tags">
+			                    	<li class="tag"><a href="#">wow</a></li>
+			                    	<li class="tag"><a href="#">designer</a></li>
+			                    	<li class="tag"><a href="#">cool guy</a></li>
+			                    </ul>
+			                    <footer class="separator-top">
+			                        <a href="#" class="btn btn-lg btn-primary">See</a>
+			                        <!--a href="#" class="people"><i class="fa fa-user"></i> 30</a-->
+			                    </footer>
+			                </article>   
+
+
+			                <article class="channel_preview_box col-sm-4 wow fadeInRight" data-wow-delay="1.5s">
+			                    <div class="img-preview">
+			                        <img src="img/slider-image-2.jpg" alt="preview">
+			                    </div>
+			                    <div class="img-avatar">
+			                        <img src="img/slider-image-2.jpg" alt="avatar">
+			                    </div>
+			                    <h3>@ bologna : startups</h3>
+								<div class="content">
+			                    	<p>This is the public listing of startups of the city of Bologna. If you are a new, request to join the list to be publically available.</p>
+			                    </div>
+			                    <ul class="tags">
+			                    	<li class="tag"><a href="#">Bologna</a></li>
+			                    	<li class="tag"><a href="#">innovation</a></li>
+			                    	<li class="tag"><a href="#">startup</a></li>
+			                    </ul>
+			                    <footer class="separator-top">
+		                        <a href="#" class="btn btn-lg btn-primary">See</a>
+		                        <a href="#" class="btn btn-lg">Join</a>
+		                        <a href="#" class="people"><i class="fa fa-user"></i> 465</a>
+			                    </footer>
+			                </article> 
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="more" class="col-md-12">
+						<a href="#">see all <i class="fa fa-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--  END PREVIEW  -->
+
+
+		<!--  START TALK ABOUT US  -->
+		<section class="talkabout" >
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<h2>They will talk about us</h2>
+						<ul class="py3">
+							<li><a href="http://www.fastcompany.com/"><img src="assets/img/fastcompany_logo.png"></a></li>
+							<li><a href="http://www.forbes.com/"><img src="assets/img/forbes_logo.jpg"></a></li>
+							<li><a href="https://hbr.org/"><img src="assets/img/hbr_logo.png"></a></li>
+							<li><a href="http://www.inc.com/"><img src="assets/img/inc_logo.png"></a></li>
+							<li><a href="http://techcrunch.com/"><img src="assets/img/techcrunch_logo.png"></a></li>
+							<li><a href="http://thenextweb.com/"><img src="assets/img/tnw_logo.png"></a></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--  END TALK ABOUT US  -->
+
+
 
 
 		<!--  START Footer  -->
-		<footer>
-			<div class="footer container separator-top">
+		<footer class="footer">
+			<div class="container separator-top">
 				<div class="row">
 					<div class="col-md-3">
-						<h3 class="footer-logo"><img src="img/logo-blue.png" alt="nectd logo"></h3>
+						<h3 class="footer-logo"><img src="img/logo.png" alt="nectd logo"></h3>
 						<ul>
 							<li><a href="/company">Company</a></li>
-							<li><a href="/learn">Learn More</a></li>
 							<li><a href="/features">Features</a></li>
 							<li><a href="/pricing">Pricing</a></li>
 							<li><a href="/careers">Careers</a></li>
@@ -183,7 +325,6 @@ Author URL: http://nectd.com
 					<div class="col-md-3">
 						<h3>More</h3>
 						<ul>
-							<li><a href="/faq">FAQ</a></li>
 							<li><a href="https://nectd.zendesk.com/hc/en-us">Support</a></li>
 							<li><a href="/report">Report an Abuse</a></li>
 							<li>&nbsp;</li>
@@ -229,7 +370,7 @@ Author URL: http://nectd.com
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="assets/js/min/toucheffects-min.js"></script>
+		<!--script src="assets/js/min/toucheffects-min.js"></script-->
 		
 		<script src="assets/js/vendor/retina.js"></script>
 		<script src="assets/js/vendor/wow.js"></script>

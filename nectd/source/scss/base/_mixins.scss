@@ -33,3 +33,23 @@
     -webkit-transition-property: color, border-color, background-color;
     transition-property: color, border-color, background-color;
 }
+
+
+@mixin opacity-transition{
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: .6s;
+    transition-duration: .6s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+}
+
+
+@mixin height-transition{
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-property: height;
+    transition-property: height;
+}

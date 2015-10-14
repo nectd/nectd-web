@@ -143,6 +143,9 @@ input[type="text"]{
  	background-color: $color-bg;
  	margin-bottom: 0px;
 	min-height: 85px;
+	.navbar-brand{
+		margin-top:	8px;
+	}
  	.navbar-nav{
  		padding-top: 18px;
 		li > a {
@@ -428,6 +431,12 @@ section{
 /* START Footer */
 
 .footer{
+	.footer-logo{
+		img{
+			margin-top: -6px;
+    		margin-left: -6px;
+		}
+	}
 	h3{
 		height: 30px;
 	}

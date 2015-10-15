@@ -64,7 +64,25 @@ Author URL: http://nectd.com
 		<![endif]-->
 		<!-- open/close -->
 
-		<!--  START navbar  -->
+		<!--  START COOKIEBAR  -->
+
+		<section id="cookiebar" class="hide-by-height">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<p>This website uses cookies to help us give you the best experience when you visit our website. By continuing to use this website, you consent to our use of these cookies.
+Find out more about how we use cookies and how to manage them by reading our <a href="/cookies">cookie notice.</a></p>
+					</div>
+					<div class="col-md-1">
+						<button class="fa fa-close btn btn-lg btn-primary" id="action_close_cookiebar">close</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--  END COOKIEBAR  -->
+
+		<!--  START NAVBAR  -->
         <nav class="navbar navbar-default">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -91,9 +109,9 @@ Author URL: http://nectd.com
             </div>
           </div>
         </nav>
-		<!--  END navbar  -->
+		<!--  END NAVBAR  -->
 
-		<!--  START Hero Slider  -->
+		<!--  START HERO Slider  -->
         <header class="slider-area">
 
             <div class="slider">
@@ -370,6 +388,9 @@ Author URL: http://nectd.com
 			</div>
 		</footer>
 		<!--  END Footer  -->
+		<script>
+			var currentPage = "HOME";
+		</script>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -380,6 +401,8 @@ Author URL: http://nectd.com
 		<script src="assets/js/vendor/owl.carousel.min.js"></script>
 		<script src="assets/js/vendor/waypoints.min.js"></script>
 		<script src="assets/js/vendor/bootstrap.min.js"></script>
+		<!--script src="assets/js/vendor/jquery.sticky.js"></script-->
+		<script src="assets/js/vendor/js.cookie.js"></script>
 		<script src="assets/js/script.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

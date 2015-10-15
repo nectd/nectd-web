@@ -200,6 +200,30 @@ input[type="text"]{
 ========================= */
 
 
+#cookiebar{
+	@include position-transition;
+	@include box-shadow(1em, 0 , 1em, $color-dark);
+	z-index: 1000;
+	background-color: $color-bg;
+	position: fixed;
+	bottom: 0;
+	border-top: 10px solid $color-primary;
+	width: 100%;
+	margin: 0;
+	height: 100px;
+	&.hide-by-height{
+		bottom: -120px;
+	}
+}
+
+#action_close_cookiebar_{
+	background-color: $color-bg;
+	border:	1px solid $color-layout;
+	&:hover{
+		background-color: $color-secondary;
+	}
+}
+
 /* START HERO SLIDER */
 .slider-area{
 	position: relative;
@@ -312,6 +336,7 @@ input[type="text"]{
 
 /* Start Section*/
 section{
+	@include height-transition;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	margin-bottom: 1em;

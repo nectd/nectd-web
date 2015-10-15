@@ -1,8 +1,8 @@
 var gulp = require("gulp");
 
 var sourceDir = "./nectd/source/",
-    thereDir = "./theme/nectd-2015/",
-    outDir = "./web/assets/";
+    themeDir = "./theme/nectd-2015/",
+    outDir = "./www/assets/";
 
 var static = {
     sourceDir : "./nectd/source/",
@@ -39,7 +39,7 @@ gulp.task("fonts", function() {
 gulp.task("bolt-js", function() {
     var uglify = require("gulp-uglify");
 
-    gulp.src(thereDir + "**/*.{js,htc}")
+    gulp.src(themeDir + "**/*.{js,htc}")
         .pipe(rename({ dirname: "" }))
         // .pipe(uglify())
         .pipe(gulp.dest(outDir + "js"));
@@ -48,7 +48,7 @@ gulp.task("bolt-js", function() {
 gulp.task("bolt-css", function() {
     var uglify = require("gulp-uglify");
 
-    gulp.src(thereDir + "**/*.css")
+    gulp.src(themeDir + "**/*.css")
         .pipe(rename({ dirname: "" }))
         .pipe(minifyCss())
         .pipe(gulp.dest(outDir + "css"));
@@ -57,16 +57,16 @@ gulp.task("bolt-css", function() {
 gulp.task("bolt-img", function() {
     var imagemin = require("gulp-imagemin");
 
-    gulp.src(thereDir + "**/*.{jpg,png,gif}")
+    gulp.src(themeDir + "**/*.{jpg,png,gif}")
         .pipe(rename({ dirname: "" }))
         .pipe(imagemin())
         .pipe(gulp.dest(outDir + "img"));
 });
 
 gulp.task("bolt-stuff", [ "bolt-css", "bolt-js", "bolt-img" ], function() {
-    gulp.src(thereDir + "old_web/fonts/*")
+    gulp.src(themeDir + "old_web/fonts/*")
         .pipe(gulp.dest(outDir + "fonts"));
-    gulp.src(thereDir + "web-cards/assets/css/images/*")
+    gulp.src(themeDir + "web-cards/assets/css/images/*")
         .pipe(gulp.dest(outDir + "css/images"));
 });
 

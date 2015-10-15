@@ -24,7 +24,14 @@ a {
     	color: darken($color-text-primary, 20%);
     	text-decoration: none;
     }
+    &.subtle {
+	    color: $color-text-subtle;
+	    &:hover, &:focus{
+	    	color: darken($color-text-primary, 20%);
+	    }
+	}
 }
+
 
 ol, ul {
     list-style: none;
@@ -79,10 +86,9 @@ img{
 ========================= */
 
 .fineprint{
-	font-size: 0.8em;
+	font-size: $font-size-small;
 	color: $color-text-subtle;
-	padding: 5px 10px 0;
-	margin: 0;
+	padding: 5px 0;
 }
 
 h2{
@@ -113,12 +119,12 @@ input[type="text"]{
 
 .tags{
 	.tag{
-		font-size: 10px;
+		font-size: $font-size-xsmall;
 		display: inline;
 		a{
 			background-color: $color-bg-light;
 			border-radius: 2px;
-			padding: 2px 4px;
+			padding: 2px 6px;
 			color: $color-text-light;
 			&:hover{
 				background-color: $color-bg-primary;
@@ -353,7 +359,7 @@ section{
 
 .channel_preview_box{
 	h3{
-		font-size: 0.7em;
+		font-size: $font-size-xsmall;
 		font-weight: 700;
 		color: $color-text-light;
 		text-align: right;
@@ -440,15 +446,12 @@ section{
 	h3{
 		height: 30px;
 	}
-	p{
-		color: $color-text-light;
-		font-size: $font-size-small;
-	}
+
 	ul{
 		li{
 			a{
 				color: $color-text-light;
-				font-size: 1em;
+				font-size: $font-size-medium;
 				&:hover{
 					color: $color-text-primary;
 				} 
@@ -483,8 +486,7 @@ section{
 
 .bottom_footer{
 	padding-bottom: 0.5em;
-	p {
-		margin-top: 1em;
+	p{
 		color: $color-text-subtle;
 	}
 }

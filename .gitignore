@@ -1,5 +1,6 @@
-vendor/
-node_modules/
-app/cache/
-www/assets/
-www/avatars/
+/vendor/
+/node_modules/
+/app/cache/
+/www/assets/
+/www/avatars/
+

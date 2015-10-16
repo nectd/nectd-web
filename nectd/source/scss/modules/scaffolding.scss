@@ -1,0 +1,12 @@
+*, ::before, ::after { box-sizing: border-box; }
+
+html {
+    font-family: $font-stack;
+    font-size: $root-font-size;
+}
+
+body {
+    margin: 0;
+    background-color: $bg-color;
+    color: $brand-color;
+}

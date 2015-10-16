@@ -1,0 +1,26 @@
+.container-set {
+    padding: 0 .5rem;
+    overflow: hidden;
+}
+
+.container {
+    border-radius: $radius-base;
+    box-shadow: $material-shadow;
+    background-color: $container-background;
+    margin: .5rem;
+    width: 350px;
+    float: left;
+    min-height: 400px;
+    padding: .5rem;
+}
+.container-header {
+    font-weight: bold;
+    margin: -.5rem;
+    padding: .5rem 1rem 0;
+}
+.container-action {
+    border: 0 none;
+    background: none;
+    cursor: pointer;
+    color: #aaa;
+}

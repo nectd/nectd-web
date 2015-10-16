@@ -445,3 +445,5 @@ extensions:
 
 mockup_card_template: mockup/card.twig
 mockup_presentation_template: mockup/presentation.twig
+
+nectd_simple_template: app/views/simple.twig

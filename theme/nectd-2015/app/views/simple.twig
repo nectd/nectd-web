@@ -1,0 +1,14 @@
+{% extends 'app/views/base.twig' %}
+
+{% set styles = [ '/assets/css/nectd-app.css' ] %}
+{% set scripts = [ '/assets/js/nectd-app.js' ] %}
+
+{% set nectdSource = '//nectd-stg.herokuapp.com/dist/nectd-api.js' %}
+{% block scripts %}
+    <script id="nectdLoader">var NectdScript=(function(h,d,s){s=d.createElement("script");d.body.insertBefore(s,d.getElementById("nectdLoader"));s.async=!0;s.src=h;return s}("{{ nectdSource }}",document));</script>
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    Loading application&hellip;
+{% endblock %}

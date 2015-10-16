@@ -114,6 +114,11 @@ mockup_pages:
     defaults:
         _controller: controller.frontend:mockup
 
+nectd_pages:
+    path: /app/{name}
+    defaults:
+        _controller: controller.frontend:nectd
+
 #HH Pretotyping Test
 card:
     path: /{handler}

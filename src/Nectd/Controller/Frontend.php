@@ -453,4 +453,12 @@ class Frontend extends BoltFrontend
 
         return $this->render($template, [], array( 'name' => $name ));
     }
+
+    public function nectd(Request $request, $name)
+    {
+        $tpl = "nectd_$name";
+        $template = $this->templateChooser()->{$tpl}();
+
+        return $this->render($template, [], array( 'name' => $name ));
+    }
 }

@@ -1,0 +1,37 @@
+.header-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $header-height;
+    background: $header-bg;
+    box-shadow: $material-shadow;
+
+    > .user-info {
+        float: right;
+        height: 100%;
+        margin-right: 2rem;
+
+        > .user-avatar {
+            height: $header-height - .5rem;
+            width: $header-height - .5rem;
+        }
+        > .user-name {
+            display: inline-block;
+            height: 100%;
+            vertical-align: top;
+            line-height: 3;
+            margin-left: .25em;
+        }
+    }
+}
+
+.header-logo {
+    display: inline-block;
+    margin-left: 2rem;
+    height: 100%;
+
+    img {
+        height: 100%;
+        border: 0 none;
+    }
+}

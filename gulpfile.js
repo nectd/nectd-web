@@ -36,6 +36,27 @@ gulp.task("fonts", function() {
         .pipe(gulp.dest(outDir + "fonts"));
 });
 
+gulp.task("build-js", function() {
+    var browserify = require("browserify");
+    var babelify = require("babelify");
+    var source = require("vinyl-source-stream");
+    // var buffer = require("vinyl-buffer");
+    // var uglify = require("gulp-uglify");
+
+    return browserify({
+            entries: sourceDir + "nectd-app.js",
+            debug: true,
+            transform: [ babelify ]
+        })
+        .bundle()
+        .pipe(source("nectd-app.js"))
+        // .pipe(buffer())
+        // .pipe(sourcemaps.init({loadMaps: true}))
+        //     .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(outDir + "js"));
+});
+
 gulp.task("bolt-js", function() {
     var uglify = require("gulp-uglify");
 
@@ -92,4 +113,4 @@ gulp.task("watch-static", function() {
     });
 });
 
-gulp.task("build", [ "bolt-stuff", "scss", "fonts", "avatars", "static" ]);
+gulp.task("build", [ "bolt-stuff", "scss", "build-js", "fonts", "avatars", "static" ]);

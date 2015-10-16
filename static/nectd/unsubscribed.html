@@ -1,0 +1,224 @@
+<!--
+Author: nectd
+Author URL: http://nectd.com
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>nectd</title>
+		<meta name="description" content="nectd: people connected services " />
+		<meta name="keywords" content="nectd, contact details, address book, email, project management" />
+		<meta name="author" content="nectd" />
+
+		<link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+		<!-- Bootstrap -->
+		<script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
+		<link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/css/vendor/animate.css" rel="stylesheet">
+		
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Muli:300:400:700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+		<link href="assets/css/vendor/owl.carousel.css" rel="stylesheet">
+		<link href="assets/css/vendor/owl.theme.css" rel="stylesheet">
+		<link href="assets/css/vendor/owl.transitions.css" rel="stylesheet">
+		<link href="assets/css/vendor/gravitons.min.css" rel="stylesheet">
+		<link href="assets/css/nectd.css" rel="stylesheet">
+
+		<!-- Facebook and Twitter integration -->
+		<meta property="og:title" content="nectd"/>
+		<meta property="og:image" content="http://www.nectd.com/assets/img/social.png"/>
+		<meta property="og:url" content="http://www.nectd.com"/>
+		<meta property="og:site_name" content="nectd"/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="nectd" />
+		<meta name="twitter:image" content="http://www.nectd.com/assets/img/social.png" />
+		<meta name="twitter:url" content="http://twitter.com/nectd" />
+		<meta name="twitter:card" content="" />
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		<!-- open/close -->
+
+		<!--  START COOKIEBAR  -->
+
+		<section id="cookiebar" class="hide-by-height">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-11">
+						<p>This website uses cookies to help us give you the best experience when you visit our website. By continuing to use this website, you consent to our use of these cookies.
+Find out more about how we use cookies and how to manage them by reading our <a href="/cookies">cookie notice.</a></p>
+					</div>
+					<div class="col-md-1">
+						<button class="fa fa-close btn btn-lg btn-primary" id="action_close_cookiebar">close</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--  END COOKIEBAR  -->
+
+		<!--  START BACK NAVBAR  -->
+        <nav class="navbar navbar-default backnav">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">
+              	<i class="fa fa-arrow-left"></i> back to nected
+              </a>
+            </div>
+
+            <div class="navbar-collapse" id="main_nav_collapse">
+              <div class="navbar-right nav-button">
+                  <a class="navbar-btn btn btn-primary btn-lg btn-block wow fadeInRight" data-wow-delay="0s" href="/register">Register</a>
+              </div>
+              <ul class="main-nav nav navbar-nav navbar-right">
+                <li class="wow fadeInDown" data-wow-delay="0s"><a href="/support">support</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.2s"><a href="/sigin">signin</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+		<!--  END BACK NAVBAR  -->
+
+<!--  END TWIG HEADER   -->
+<!--  START TWIG CONTENT  -->
+
+	<section class="utility-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h1>Unsubscribed.<br>We'll not nag you with emails anymore.</h1>
+					<h2>We are so sorry to see you go, you can rejoin our newsletter in any moment with the form below. </h2>
+					<p>Before you go, do you mind if we ask you the reason?</p>
+					<button class="unsubscribed_feedback btn btn-lg btn-default mr3 wow fadeIn" data-wow-delay="1.0s" id="unsubscribed_feedback_1">Too much emails</button>
+					<button class="unsubscribed_feedback btn btn-lg btn-default mr3 wow fadeIn" data-wow-delay="1.5s" id="unsubscribed_feedback_2">Not really interested</button>
+					<button class="unsubscribed_feedback btn btn-lg btn-default wow fadeIn" data-wow-delay="2.0s" id="unsubscribed_feedback_3">I never subscribed!</button>
+					<p id="thanks" class="invisible h1">Thank You!</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<!--  END TWIG CONTENT   -->
+<!--  START TWIG FOOTER  -->
+
+		<!--  START Footer  -->
+		<footer class="footer">
+			<div class="container separator-top">
+				<div class="row">
+					<div class="col-md-3">
+						<h3 class="footer-logo"><img src="assets/img/logo.png" alt="nectd logo"></h3>
+						<ul>
+							<li><a href="/company">Company</a></li>
+							<li><a href="/learn">Learn more</a></li>
+							<li><a href="/features">Features</a></li>
+							<li><a href="/pricing">Pricing</a></li>
+							<li><a href="/careers">Careers</a></li>
+							<li>&nbsp;</li>
+							<li><a href="/developers">Developers</a></li>
+							<li><a href="/business">for Business</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3>More</h3>
+						<ul>
+							<li><a href="https://nectd.zendesk.com/hc/en-us">Support</a></li>
+							<li><a href="/report">Report an Abuse</a></li>
+							<li>&nbsp;</li>
+							<li><a href="/blog">Blog</a></li>
+							<li>&nbsp;</li>
+							<li><a href="/privacy">Privacy Policy</a></li>
+							<li><a href="/terms">Terms and Conditions</a></li>
+							<li><a href="/investors">Investors</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3>Connect With Us</h3>
+						<ul class="social-icons">
+							<li><a class="facebook" href="https://facebook.com/nectd"><i class="fa fa-facebook-square"></i></a></li>
+							<li><a class="twitter" href="https://twitter.com/nectd"><i class="fa fa-twitter-square"></i></a></li>
+							<li><a class="google" href="http://google.com/nectd"><i class="fa fa-google-plus-square"></i></a></li>
+							<li><a class="nectd" href="http://nectd.com/nectd"><i class="fa fa-heart"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+							<h3>Newsletter</h3>
+							<p class="fineprint">Subscribe to our newsletter to keep up-to-date with all the latest news.</p>
+							<form>
+								<div class="form-group">
+									<input type="text" class="text form-control" placeholder="Your Name">
+								</div>
+								<div class="form-group">
+									<input type="email" class="text form-control" placeholder="Your Email">
+								</div>
+									<input type="submit" value="subscribe" class="btn btn-primary btn-lg btn-block" />
+							</form>
+					</div>
+				</div>
+			</div>
+			<div id="bottom_footer" class="bottom_footer container separator-top">
+				<div class="row">
+					<div class="col-xs-10">
+						<p class="mt3">© nectd 2015 - made with <i class="fa fa-heart"></i> by smart people in Bologna and San Francisco </p>
+					</div>
+					<div class="col-xs-2">
+						<p class="mt3"><a class="subtle" href="/status">Server Status: <i id="serverstatus_off">offline</i><i id="serverstatus_on" class="hide">online</i></a></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!--  END Footer  -->
+		<script>
+			var currentPage = "UNSUBSCRIBED";
+		</script>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!--script src="assets/js/min/toucheffects-min.js"></script-->
+		
+		<script src="assets/js/vendor/retina.js"></script>
+		<script src="assets/js/vendor/wow.js"></script>
+		<script src="assets/js/vendor/owl.carousel.min.js"></script>
+		<script src="assets/js/vendor/waypoints.min.js"></script>
+		<script src="assets/js/vendor/bootstrap.min.js"></script>
+		<!--script src="assets/js/vendor/jquery.sticky.js"></script-->
+		<script src="assets/js/vendor/js.cookie.js"></script>
+		<script src="assets/js/script.js"></script>
+
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+		(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+		function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+		e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+		e.src='//www.google-analytics.com/analytics.js';
+		r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+		ga('create','UA-XXXXX-X');ga('send','pageview');
+		</script>
+	</body>
+</html>

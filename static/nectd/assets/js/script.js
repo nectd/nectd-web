@@ -43,6 +43,18 @@ var nectd = {
           mouseDrag: false,
           transitionStyle : "goDown"
       });
+    };
+
+    if(!!currentPage && currentPage == "UNSUBSCRIBED"){
+
+      $(".unsubscribed_feedback").click(function(){
+        var _this = $(this);
+        $(".unsubscribed_feedback").removeClass("selected").addClass("btn-default");
+        _this.removeClass("btn-default").addClass("selected").blur();
+        // TODO Insert Analitycs Event
+        $("#thanks").removeClass("invisible").addClass("animated bounceIn");
+      });
+
     }
 
   },

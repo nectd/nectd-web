@@ -1,13 +1,9 @@
-
 /* HACKZ
 ========================= */
-
 *, *::before, *::after { box-sizing: border-box; }
-
 
 /* COMMON LAYOUT 
 ========================= */
-
 body {
     font-size: $font-base-size;
     font-family: $font-sans-serif;
@@ -32,7 +28,6 @@ a {
 	}
 }
 
-
 ol, ul {
     list-style: none;
     margin: 0px;
@@ -50,9 +45,28 @@ img{
 
 /* BOOTSTRAP OVERRIDE 
 ========================= */
+
 .btn, .btn-lng{
 	@include background-color-transition;
-	border-radius: 0px;
+	border-radius: 0;
+	&:focus{
+		outline: 0 !important;
+	}
+	&.btn-default{
+		background-color: $color-bg;
+		border-color: $color-primary;
+		color: $color-text-primary;
+		&:hover{
+			background-color: $color-primary;
+			color: $color-text-contrast;
+		}
+		&:focus, &:active{
+			background-color: $color-bg;
+			border-color: $color-primary;
+			color: $color-text-primary;
+		}
+	}
+
 	&.btn-primary{
 		background-color: $color-primary;
 		border-color: $color-primary;
@@ -61,14 +75,15 @@ img{
 			border-color: darken($color-primary, 20%);
 		}
 	}
+	&.selected{
+		background-color: darken($color-primary, 20%);
+		border-color: darken($color-primary, 20%);
+		color: $color-text-contrast;
+	}
 }
-
-
-
 
 /* DECORATION LAYOUT 
 ========================= */
-
 .separator-top{
 	border-top: 1px solid $color-layout;
 	margin-top: 2em;
@@ -80,21 +95,29 @@ img{
 }
 
 
-
+.card{
+	@include rounded;
+	background-color: $color-bg;
+	padding: 20px;
+}
 
 /* TYPOGRAPHY 
 ========================= */
-
 .fineprint{
 	font-size: $font-size-small;
 	color: $color-text-subtle;
 	padding: 5px 0;
 }
 
+.h1{
+	font-size: $font-size-title;
+	color: $color-text-primary;
+	font-weight: 700;
+}
+
 h2{
 	margin-bottom: 1em;
 }
-
 
 /* BUTTONS 
 ========================= */
@@ -102,7 +125,6 @@ h2{
 
 /* FORM 
 ========================= */
-
 input[type="text"]{
 		border: 1px solid $color-layout;
 		color: $color-text;
@@ -112,10 +134,47 @@ input[type="text"]{
 	}
 }
 
-
-/* OTHER 
+/* ELEMENTS 
 ========================= */
-
+.channel_preview_box{
+	h3{
+		font-size: $font-size-xsmall;
+		font-weight: 700;
+		color: $color-text-light;
+		text-align: right;
+	}
+	p{
+		font-size:	1em;
+	}
+	.img-preview{
+		height: 100px;
+		width: 100%;
+		overflow: hidden;
+		img{
+			width: 100%;
+		}
+	}
+	.img-avatar{
+	    position: absolute;
+	    width: 80px;
+	    height: 80px;
+	    overflow: hidden;
+	    top: 60px;
+	    left: 20px;
+	    border: 4px solid $color-bg;
+	}
+	.content{
+		min-height: 80px;
+		@include height-transition;
+	}
+	footer{
+		height: 50px;
+		.people{
+		   float: right;
+		   padding: 10px;
+		}
+	}
+}
 
 .tags{
 	.tag{
@@ -134,16 +193,13 @@ input[type="text"]{
 	}
 }
 
-
 .more{
 	text-align: right;
 	margin: 30px;
 }
 
-/* HEADER 
+/* COMMONS
 ========================= */
-
-
 /* START NAVBAR */
 .navbar{
  	background-color: $color-bg;
@@ -151,6 +207,12 @@ input[type="text"]{
 	min-height: 85px;
 	.navbar-brand{
 		margin-top:	8px;
+	}
+	&.backnav .navbar-brand{
+		margin-top:	1em;
+		&:hover{
+			color: $color-primary;
+		}
 	}
  	.navbar-nav{
  		padding-top: 18px;
@@ -195,11 +257,7 @@ input[type="text"]{
 }
 /* END NAVBAR */
 
-
-/* SECTIONS 
-========================= */
-
-
+/* START COOKIEBAR */
 #cookiebar{
 	@include position-transition;
 	@include box-shadow(1em, 0 , 1em, $color-dark);
@@ -223,6 +281,71 @@ input[type="text"]{
 		background-color: $color-secondary;
 	}
 }
+
+/* END COOKIEBAR */
+
+/* START FOOTER */
+.footer{
+	.footer-logo{
+		img{
+			margin-top: -6px;
+    		margin-left: -6px;
+		}
+	}
+	h3{
+		height: 30px;
+	}
+
+	ul{
+		li{
+			a{
+				color: $color-text-light;
+				font-size: $font-size-medium;
+				&:hover{
+					color: $color-text-primary;
+				} 
+			}
+		}
+		&.social-icons{
+			li{
+				display: inline-block;
+				a{
+					width: 48px;
+					height: 45px;
+					display: block;
+					font-size: 2.6em;
+					&.facebook:hover{
+						color: $color-facebook;
+					}
+					&.twitter:hover{
+						color: $color-twitter;
+					}
+					&.google:hover{
+						color: $color-google;
+					}
+					&.nectd:hover{
+						color: $color-nectd;
+					}
+				}
+			}
+		}
+	}
+}
+
+.bottom_footer{
+	padding-bottom: 0.5em;
+	p{
+		color: $color-text-subtle;
+	}
+}
+/* END FOOTER */
+
+
+/* SECTIONS 
+========================= */
+
+/* START HOME 
+========================= */
 
 /* START HERO SLIDER */
 .slider-area{
@@ -270,12 +393,6 @@ input[type="text"]{
 #bg-slider .item img{
 	width: 100%;
 	height: 630px
-}
-
-.card{
-	background-color: $color-bg;
-	border-radius: 5px;
-	padding: 20px;
 }
 
 .search-form {
@@ -366,60 +483,10 @@ section{
 
 /* END ENGAGE */
 
-
-/* START CTA */
-
-.cta{
-	text-align: center;
-}
-
-
-/* END CTA */
-
 /* START Preview */
 
 .previews{
 	padding-bottom: 2em;
-}
-
-.channel_preview_box{
-	h3{
-		font-size: $font-size-xsmall;
-		font-weight: 700;
-		color: $color-text-light;
-		text-align: right;
-	}
-	p{
-		font-size:	1em;
-	}
-	.img-preview{
-		height: 100px;
-		width: 100%;
-		overflow: hidden;
-		img{
-			width: 100%;
-		}
-	}
-	.img-avatar{
-	    position: absolute;
-	    width: 80px;
-	    height: 80px;
-	    overflow: hidden;
-	    top: 60px;
-	    left: 20px;
-	    border: 4px solid $color-bg;
-	}
-	.content{
-		min-height: 80px;
-		@include height-transition;
-	}
-	footer{
-		height: 50px;
-		.people{
-		   float: right;
-		   padding: 10px;
-		}
-	}
 }
 
 /* END Preview */
@@ -454,71 +521,25 @@ section{
 
 }
 
-
 /* END Talk About */
 
+/* END HOME 
+========================= */
 
 
-/* START Footer */
+/* START UTILITY 
+========================= */
 
-.footer{
-	.footer-logo{
-		img{
-			margin-top: -6px;
-    		margin-left: -6px;
-		}
-	}
-	h3{
-		height: 30px;
-	}
-
-	ul{
-		li{
-			a{
-				color: $color-text-light;
-				font-size: $font-size-medium;
-				&:hover{
-					color: $color-text-primary;
-				} 
-			}
-		}
-		&.social-icons{
-			li{
-				display: inline-block;
-				a{
-					width: 48px;
-					height: 45px;
-					display: block;
-					font-size: 2.6em;
-					&.facebook:hover{
-						color: $color-facebook;
-					}
-					&.twitter:hover{
-						color: $color-twitter;
-					}
-					&.google:hover{
-						color: $color-google;
-					}
-					&.nectd:hover{
-						color: $color-nectd;
-					}
-				}
-			}
-		}
+.utility-page{
+	padding: 6em;
+	h1{
+		font-family: $font-title;
+		font-weight: 700;
 	}
 }
 
-
-.bottom_footer{
-	padding-bottom: 0.5em;
-	p{
-		color: $color-text-subtle;
-	}
-}
-
-/* END Footer */
-
-
+/* END UTILITY 
+========================= */
 
 
 

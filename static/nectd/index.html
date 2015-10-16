@@ -98,18 +98,22 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 
             <div class="collapse navbar-collapse" id="main_nav_collapse">
               <div class="navbar-right nav-button">
-                  <button class="navbar-btn btn btn-primary btn-lg btn-block wow fadeInRight" data-wow-delay="0.6s">sign in</button>
+                  <a class="navbar-btn btn btn-primary btn-lg btn-block wow fadeInRight" data-wow-delay="0.6s" href="/register">Register</a>
               </div>
               <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="wow fadeInDown" data-wow-delay="0s"><a href="/features">Features</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.2s"><a href="/pricing">Pricing</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0s"><a href="/learn">Learn More</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.2s"><a href="/features">Features</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="/developers">Developers</a></li>
                 <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="https://slack.zendesk.com/hc/en-us">Support</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="/signin">Sign in</a></li>
               </ul>
             </div>
           </div>
         </nav>
 		<!--  END NAVBAR  -->
+
+<!--  END TWIG HEADER   -->
+<!--  START TWIG CONTENT  -->
 
 		<!--  START HERO Slider  -->
         <header class="slider-area">
@@ -127,7 +131,7 @@ Find out more about how we use cookies and how to manage them by reading our <a 
                     <div class="col-md-7 col-md-offset-1">
                         <h2>Connecting People</h2>
                         <h2>Just Got Easy</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi deserunt deleniti, ullam commodi sit ipsam laboriosam velit adipisci quibusdam aliquam teneturo!</p>
+                        <p>Introducing the most elegant way to get in touch with people that matters, sharing contact details with your friends, team or the world, and be always reachable.</p>
                         <div class="search-form wow pulse card" data-wow-delay="0.8s">
                             <form action="" class=" form-inline">
                             <div class="form-group">                            	
@@ -160,7 +164,7 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 					</div>
 					<div class="step-grid">
 						<div class="img-container">
-							<img src="img/shoe-img.png" title="Create" class="wow bounceIn" data-wow-delay="1.0s" data-wow-offset="200">
+							<img src="img/step-2.png" title="Create" class="wow bounceIn" data-wow-delay="1.0s" data-wow-offset="200">
 						</div>
 						<span class="wow bounceIn" data-wow-delay="1.0s"><label>2</label></span>
 						<div class="borderline wow bounceIn" data-wow-delay="1.5s"> </div>
@@ -168,7 +172,7 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 					</div>
 					<div class="step-grid">
 						<div class="img-container">
-							<img src="img/lap-img.png" title="Share" class="wow bounceIn" data-wow-delay="2.0s" data-wow-offset="200">
+							<img src="img/step-3.png" title="Share" class="wow bounceIn" data-wow-delay="2.0s" data-wow-offset="200">
 						</div>
 						<span class="wow bounceIn" data-wow-delay="2.0s"><label>3</label></span>
 						<a href="/signin" class="wow bounceIn" data-wow-delay="2.0s">Share with the world</a>
@@ -322,7 +326,8 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 		<!--  END TALK ABOUT US  -->
 
 
-
+<!--  END TWIG CONTENT   -->
+<!--  START TWIG FOOTER  -->
 
 		<!--  START Footer  -->
 		<footer class="footer">
@@ -332,12 +337,13 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 						<h3 class="footer-logo"><img src="assets/img/logo.png" alt="nectd logo"></h3>
 						<ul>
 							<li><a href="/company">Company</a></li>
+							<li><a href="/learn">Learn more</a></li>
 							<li><a href="/features">Features</a></li>
 							<li><a href="/pricing">Pricing</a></li>
 							<li><a href="/careers">Careers</a></li>
 							<li>&nbsp;</li>
 							<li><a href="/developers">Developers</a></li>
-							<li><a href="/business">Business</a></li>
+							<li><a href="/business">for Business</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -347,6 +353,7 @@ Find out more about how we use cookies and how to manage them by reading our <a 
 							<li><a href="/report">Report an Abuse</a></li>
 							<li>&nbsp;</li>
 							<li><a href="/blog">Blog</a></li>
+							<li>&nbsp;</li>
 							<li><a href="/privacy">Privacy Policy</a></li>
 							<li><a href="/terms">Terms and Conditions</a></li>
 							<li><a href="/investors">Investors</a></li>

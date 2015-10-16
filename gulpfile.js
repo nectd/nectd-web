@@ -96,7 +96,7 @@ gulp.task("avatars", function() {
 
     gulp.src("nectd/avatars/*.{jpg,png,gif}")
         .pipe(imagemin())
-        .pipe(gulp.dest("web/avatars/"));
+        .pipe(gulp.dest(outDir + "avatars"));
 })
 
 var watch = require("gulp-watch");

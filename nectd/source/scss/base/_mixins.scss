@@ -57,7 +57,7 @@
 @mixin position-transition{
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
-    -webkit-transition-duration: 0.s;
+    -webkit-transition-duration: 0.0s;
     transition-duration: 0.4s;
     -webkit-transition-property: top, left, right, bottom;
     transition-property: top, left, right, bottom;

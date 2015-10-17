@@ -43,6 +43,12 @@ var nectd = {
           mouseDrag: false,
           transitionStyle : "goDown"
       });
+
+      $("#action_close_cookiebar").click(function(){
+        Cookies.set("cookie_policy", "true");
+        $("#cookiebar").addClass("hide-by-height");
+      });
+
     };
 
     if(!!currentPage && currentPage == "UNSUBSCRIBED"){
@@ -57,19 +63,12 @@ var nectd = {
 
     }
 
-  },
-  handlers: function(){
-    $("#action_close_cookiebar").click(function(){
-      Cookies.set("cookie_policy", "true");
-      $("#cookiebar").addClass("hide-by-height");
-    });
   }
 
 }
 
 $(document).ready(function() {
   nectd.init();
-  nectd.handlers();
   nectd.checkPrivacybarCookie();
   nectd.checkServerStatus();
 })

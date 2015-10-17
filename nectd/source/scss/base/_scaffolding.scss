@@ -80,13 +80,70 @@ img{
 		border-color: darken($color-primary, 20%);
 		color: $color-text-contrast;
 	}
+	&.btn-default.btn-facebook{
+		background-color: $color-facebook;
+		border-color: $color-facebook;
+		color: $color-text-contrast;
+		text-align: left;
+		padding-left: 3em;
+		&:hover, &:focus, &:active{
+			background-color: darken($color-facebook, 20%);
+			border-color: darken($color-facebook, 20%);
+			color: $color-text-contrast;
+		}
+	}
+	&.btn-default.btn-twitter{
+		background-color: $color-twitter;
+		border-color: $color-twitter;
+		color: $color-text-contrast;
+		text-align: left;
+		padding-left: 3em;
+		&:hover, &:focus, &:active{
+			background-color: darken($color-twitter, 20%);
+			border-color: darken($color-twitter, 20%);
+			color: $color-text-contrast;
+		}
+	}
+	&.btn-default.btn-google{
+		background-color: $color-google;
+		border-color: $color-google;
+		color: $color-text-contrast;
+		text-align: left;
+		padding-left: 3em;
+		&:hover, &:focus, &:active{
+			background-color: darken($color-google, 20%);
+			border-color: darken($color-google, 20%);
+			color: $color-text-contrast;
+		}
+	}
 }
+
+.dropdown-menu{
+	min-width: 300px;
+	margin-top: 10px !important;
+	li {
+		a{
+			padding: 10px;
+			&:hover, &:active, &:focus{
+				background-color: $color-primary;
+				color: $color-text-contrast;
+			}
+
+		}
+
+	}
+}
+
 
 /* DECORATION LAYOUT 
 ========================= */
 .separator-top{
 	border-top: 1px solid $color-layout;
 	margin-top: 2em;
+}
+
+.separator-right{
+	border-right: 2px solid $color-layout;
 }
 
 .separator-bottom{
@@ -201,6 +258,17 @@ input[type="text"]{
 /* COMMONS
 ========================= */
 /* START NAVBAR */
+
+.main_nav_collapse{
+	z-index: 999;
+	position: relative;
+}
+
+.navbar-header{
+	z-index: 1000;
+	position: relative;
+}
+
 .navbar{
  	background-color: $color-bg;
  	margin-bottom: 0px;
@@ -216,24 +284,51 @@ input[type="text"]{
 	}
  	.navbar-nav{
  		padding-top: 18px;
-		li > a {
-			padding-right: 20px;
-	  		padding-left: 20px;
-	  		text-transform: capitalize;
-	  		&::after{
+ 		> li.open{
+ 			&:after{
 	  			background-color: $color-primary;
-				bottom: -16px;
-				content: "";
-				left: 0;
-				position: absolute;
-				transition: all 0.2s ease 0s;
-				height: 0px;
-				width: 100%
+			  	bottom: -16px;
+			  	content: "";
+			  	height: 5px;
+			  	left: 0;
+			  	position: absolute;
+			  	width: 100%;
 	  		}
-	  		&:hover:after{
-	  			height: 10px;
-	  		}
-	  		&.active:after{
+	 		> a{
+	 			background-color: $color-bg;
+	 			&:hover, &:focus, &:active{
+		  			background-color: $color-bg;
+		  		}
+		  		&:after{
+		  			height: 10px;
+		  		}
+		  	}
+ 		}
+		> li {
+			> a {
+				padding-right: 20px;
+		  		padding-left: 20px;
+		  		text-transform: capitalize;
+		  		background-color: $color-bg;
+		  		&::after{
+		  			background-color: $color-primary;
+					bottom: -16px;
+					content: "";
+					left: 0;
+					position: absolute;
+					transition: all 0.2s ease 0s;
+					height: 0px;
+					width: 100%
+		  		}
+		  		&:hover, &:focus, &:active{
+		  			background-color: $color-bg;
+		  		}
+		  		&:hover:after{
+		  			height: 10px;
+		  		}
+		  	}
+
+		  	&.active:after{
 	  			background-color: $color-primary;
 			  	bottom: -16px;
 			  	content: "";
@@ -260,7 +355,7 @@ input[type="text"]{
 /* START COOKIEBAR */
 #cookiebar{
 	@include position-transition;
-	@include box-shadow(1em, 0 , 1em, $color-dark);
+	@include box-shadow(0, 0.1em , 1em, $color-dark);
 	z-index: 1000;
 	background-color: $color-bg;
 	position: fixed;
@@ -286,6 +381,12 @@ input[type="text"]{
 
 /* START FOOTER */
 .footer{
+	&.bottom-docked{
+		bottom: 0;
+	    height: 60px;
+	    position: absolute;
+	    width: 100%;
+	}
 	.footer-logo{
 		img{
 			margin-top: -6px;

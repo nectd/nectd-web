@@ -10,8 +10,8 @@ var nectd = {
     })
     .done(function(data) {
          if(data && data.monitors && data.monitors.monitor && data.monitors.monitor[0] && (data.monitors.monitor[0].status == "2" )){
-            $("#serverstatus_off").addClass("hide");
-            $("#serverstatus_on").removeClass("hide");
+            $("#serverstatus_off").addClass("hidden");
+            $("#serverstatus_on").removeClass("hidden");
          }
     });
   },
@@ -63,6 +63,12 @@ var nectd = {
 
     }
 
+    if(!!currentPage && currentPage == "SIGNIN"){
+
+    }
+    if(!!currentPage && currentPage == "REGISTER"){
+
+    }
   }
 
 }

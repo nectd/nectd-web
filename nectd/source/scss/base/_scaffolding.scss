@@ -46,6 +46,11 @@ img{
 /* BOOTSTRAP OVERRIDE 
 ========================= */
 
+.tab-pane{
+	padding-top: 2em;
+
+}
+
 .btn, .btn-lng{
 	@include background-color-transition;
 	border-radius: 0;
@@ -143,7 +148,7 @@ img{
 }
 
 .separator-right{
-	border-right: 2px solid $color-layout;
+	border-right: 1px solid $color-layout;
 }
 
 .separator-bottom{
@@ -166,7 +171,8 @@ img{
 	padding: 5px 0;
 }
 
-.h1{
+h1, .h1{
+	font-family: $font-title;
 	font-size: $font-size-title;
 	color: $color-text-primary;
 	font-weight: 700;
@@ -381,9 +387,10 @@ input[type="text"]{
 
 /* START FOOTER */
 .footer{
+	background-color: $color-bg;
 	&.bottom-docked{
 		bottom: 0;
-	    height: 60px;
+	    height: 66px;
 	    position: absolute;
 	    width: 100%;
 	}
@@ -632,11 +639,7 @@ section{
 ========================= */
 
 .utility-page{
-	padding: 6em;
-	h1{
-		font-family: $font-title;
-		font-weight: 700;
-	}
+	padding: 5em;
 }
 
 /* END UTILITY 

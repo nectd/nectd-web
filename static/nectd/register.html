@@ -97,32 +97,78 @@ Author URL: http://nectd.com
 <!--  END TWIG HEADER   -->
 <!--  START TWIG CONTENT  -->
 
-	<section class="utility-page">
+	<section class="">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-2 separator-right">
-					<h1>SIGN IN</h1>
+					<h1>REGISTER</h1>
+					<ul class="nav nav-tabs">
+						  <li role="presentation" class="active"><a href="#personal" data-toggle="tab">Personal or Professional</a></li>
+						  <li role="presentation"><a href="#company" data-toggle="tab">Company</a></li>
+					</ul>
+					<div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="personal">
+							<form>
+								<div class="form-group col-xs-6 pl0 pr1">
+								    <label for="register_firstname_input">Your first name</label>
+								    <input type="text" class="form-control" id="register_firstname_input" name="register_lastname_input" placeholder="First name">
+							  	</div>
+							  	<div class="form-group col-xs-6 pl1 pr0 ">
+								    <label for="register_lastname_input">Your last name</label>
+								    <input type="text" class="form-control" id="register_lasttname_input" name="register_lastname_input" placeholder="Last name">
+							  	</div>
+								<div class="form-group">
+									<label for="register_phoneemail_input">Enter a mobile number or email</label>
+									<input type="text" class="form-control" id="register_phoneemail_input" name="register_phoneemail_input" placeholder="Phone or Email">
+								</div>
+								<div class="form-group">
+									<label for="register_password_input">Choose a password</label>
+									<input type="password" class="form-control" id="register_password_input" name="register_password_input" placeholder="Password">
+									<p class="fineprint">must have at least 3 chars, one number, one capital</p>
+								</div>
+								<button type="submit" class="btn btn-lg btn-primary btn-block mb2">Register</button>
+								<div class="form-group">
+									<a href="/signin" class="subtle px1">Already have an account? Sign in!</a>
+								</div>
+							</form>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="company">
+					    	<form>
+					    		<div class="form-group">
+									<label for="register_companyname_input">Your company name</label>
+									<input type="text" class="form-control" id="register_companyname_input" name="register_companyname_input" placeholder="Company or business name">
+								</div>
+								<div class="form-group col-xs-6 pl0 pr1">
+								    <input type="text" class="form-control" id="register_vat_input" name="register_vat_input" placeholder="VAT ID">
+							  	</div>
+							  	<div class="form-group col-xs-6 pl1 pr0 ">
+								    <input type="text" class="form-control" id="register_country_input" name="register_country_input" placeholder="VAT ID country">
+							  	</div>
+								<div class="form-group col-xs-6 pl0 pr1">
+								    <label for="register_firstname_input">Your first name</label>
+								    <input type="text" class="form-control" id="register_firstname_input" name="register_lastname_input" placeholder="First name">
+							  	</div>
+							  	<div class="form-group col-xs-6 pl1 pr0 ">
+								    <label for="register_lastname_input">Your last name</label>
+								    <input type="text" class="form-control" id="register_lasttname_input" name="register_lastname_input" placeholder="Last name">
+							  	</div>
+								<div class="form-group">
+									<label for="register_phoneemail_input">A mobile number or email you can access</label>
+									<input type="text" class="form-control" id="register_phoneemail_input" name="register_phoneemail_input" placeholder="Phone or Email">
+								</div>
+								<div class="form-group">
+									<label for="register_password_input">Choose a password</label>
+									<input type="password" class="form-control" id="register_password_input" name="register_password_input" placeholder="Password">
+									<p class="fineprint">must have at least 3 chars, one number, one capital</p>
+								</div>
+								<button type="submit" class="btn btn-lg btn-primary btn-block mb2">Register</button>
+								<div class="form-group">
+									<a href="/signin" class="subtle px1">Already have an account? Sign in!</a>
+								</div>
+							</form>
+					    </div>
+					</div>
 
-					<form>
-					  <div class="form-group">
-					    <label for="signin_email_input">Email address</label>
-					    <input type="email" class="form-control" id="signin_email_input" name="signin_email_input" placeholder="Email">
-					  </div>
-					  <div class="form-group">
-					    <label for="signin_password_input">Password</label>
-					    <input type="password" class="form-control" id="signin_password_input" name="signin_password_input" placeholder="Password">
-					  </div>
-					  <div class="checkbox">
-					    <label>
-					      <input type="checkbox" name="rememberme_check" id="rememberme_check"> Remember me
-					    </label>
-					  </div>
-					  <button id="signin_submit" type="submit" class="btn btn-lg btn-primary btn-block mb2">Sign in</button>
-					  <div class="form-group">
-					  	<a href="/register" class="subtle separator-right px1">Register a new account</a>
-					  	<a href="/recover" class="subtle px1">Forgot password?</a>
-					  </div>
-					</form>
 
 				</div>
 				<div class="col-md-3">
@@ -138,6 +184,9 @@ Author URL: http://nectd.com
 							<button type="button" class="btn btn-lg btn-default btn-google btn-block fa fa-google-plus-square"> Login with Google</button>
 						</div>
 						<p class="fineprint">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
+
+						<p class="fineprint">By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>, including <a href="/cookies">Cookie Use</a>. Others will be able to find you by email or phone number when provided.</p>
+								
 					</form>
 				</div>
 			</div>
@@ -163,7 +212,7 @@ Author URL: http://nectd.com
 		</footer>
 		<!--  END Footer  -->
 		<script>
-			var currentPage = "SIGNIN";
+			var currentPage = "REGISTER";
 		</script>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -42,6 +42,11 @@ img{
 	text-align: center;
 }
 
+.overflow-container{
+	overflow-x: hidden;
+	position: relative;
+	@include animation-transition;
+}
 
 /* BOOTSTRAP OVERRIDE 
 ========================= */
@@ -163,6 +168,8 @@ img{
 	padding: 20px;
 }
 
+
+
 /* TYPOGRAPHY 
 ========================= */
 .fineprint{
@@ -178,8 +185,21 @@ h1, .h1{
 	font-weight: 700;
 }
 
+h1{
+	&.huge{
+		font-size: $font-size-huge;
+	}
+}
+
 h2{
 	margin-bottom: 1em;
+}
+
+.h2{
+	font-family: $font-title;
+	font-size: $font-size-medium;
+	color: $color-text-dark;
+	font-weight: 700;
 }
 
 /* BUTTONS 
@@ -195,6 +215,18 @@ input[type="text"]{
 	&:hover{
 		border:1px solid $color-primary;
 	}
+}
+
+
+#register-step1{
+	@include animation-transition;
+	background-color: $color-bg;
+}
+#register-step2{
+	@include animation-transition;
+	background-color: $color-bg;
+	position: absolute;
+	top: 0;
 }
 
 /* ELEMENTS 
@@ -391,7 +423,7 @@ input[type="text"]{
 	&.bottom-docked{
 		bottom: 0;
 	    height: 66px;
-	    position: absolute;
+	    position: fixed;
 	    width: 100%;
 	}
 	.footer-logo{
@@ -639,8 +671,16 @@ section{
 ========================= */
 
 .utility-page{
-	padding: 5em;
+	padding: 5em 0 3em;
 }
+.utility-section{
+	padding: 3em 0 1em;
+}
+
+.register-page{
+	padding-bottom: 100px;
+}
+
 
 /* END UTILITY 
 ========================= */

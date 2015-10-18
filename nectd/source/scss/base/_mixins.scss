@@ -24,7 +24,12 @@
     }
 }
 
-
+@mixin animation-transition(){
+    -webkit-transition-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+}
 @mixin background-color-transition{
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;

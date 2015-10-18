@@ -98,48 +98,29 @@ Author URL: http://nectd.com
 <!--  END TWIG HEADER   -->
 <!--  START TWIG CONTENT  -->
 
-	<section class="utility-page">
+	<section class="register-page">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 col-md-offset-2 separator-right">
-					<h1>SIGN IN</h1>
+				<div class="col-md-8 col-md-offset-2">
+					
+					<div id="register-step2">
+						
+						<section class="utility-section">
+							<h1 class="huge">Great!</h1>
+							<h1>We just sent you a confirmation code.</h1>
+							<p>Just write the code you will receive in the field below to confirm that you are the owner of that contact detail.</p>
+							<p>If you don't receive any code within 15 minutes, feel free to request another one</p>
 
-					<form>
-					  <div class="form-group">
-					    <label for="signin_phoneemail_input">Phone number or Email </label>
-					    <input type="email" class="form-control" id="signin_phoneemail_input" name="signin_phoneemail_input" placeholder="Phone or Email">
-					  </div>
-					  <div class="form-group">
-					    <label for="signin_password_input">Password</label>
-					    <input type="password" class="form-control" id="signin_password_input" name="signin_password_input" placeholder="Password">
-					  </div>
-					  <div class="checkbox">
-					    <label>
-					      <input type="checkbox" name="rememberme_check" id="rememberme_check"> Remember me
-					    </label>
-					  </div>
-					  <button id="signin_submit" type="submit" class="btn btn-lg btn-primary btn-block mb2">Sign in</button>
-					  <div class="form-group">
-					  	<a href="/register" class="subtle separator-right px1">Register a new account</a>
-					  	<a href="/recover" class="subtle px1">Forgot password?</a>
-					  </div>
-					</form>
-
-				</div>
-				<div class="col-md-3">
-					<h1>OR</h1>
-					<form>
-						<div class="form-group">
-							<button type="button" class="btn btn-lg btn-default btn-facebook btn-block fa fa-facebook-square"> Login with Facebook</button>
-						</div>
-						<div class="form-group">
-							<button type="button" class="btn btn-lg btn-default btn-twitter btn-block fa fa-twitter-square"> Login with Twitter</button>
-						</div>
-						<div class="form-group">
-							<button type="button" class="btn btn-lg btn-default btn-google btn-block fa fa-google-plus-square"> Login with Google</button>
-						</div>
-						<p class="fineprint">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
-					</form>
+							<form>
+								<div class="form-group">
+									<label for="confirm_code_input">Write here the code you received.</label>
+									<input type="text" class="form-control" id="confirm_code_input" name="confirm_code_input" placeholder="Enter the code">
+								</div>
+								<button class="btn btn-lg btn-default mr3 wow fadeIn" data-wow-delay="1.0s" id="resend_confirmation_btn">Resend</button>
+								<button class="btn btn-lg btn-primary wow fadeIn" data-wow-delay="1.5s" id="validate_confirmation_btn">It's OK, Validate this code</button>
+							</form>
+						</section>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -164,7 +145,7 @@ Author URL: http://nectd.com
 		</footer>
 		<!--  END Footer  -->
 		<script>
-			var currentPage = "SIGNIN";
+			var currentPage = "COMFIRM";
 		</script>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

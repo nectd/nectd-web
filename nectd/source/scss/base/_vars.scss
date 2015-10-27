@@ -1,7 +1,9 @@
 /* COLORS */
-$color-primary:         rgba(#00AEEF, 1);
-$color-secondary:       rgba(#a2cad3, 1);
-$color-tertiary:        rgba(#0de55a, 1);
+//$color-primary:         rgba(#FF1CD2, 1);
+$color-primary:         rgba(#390ABA, 1);
+$color-secondary:       rgba(#FF1CD2, 1);
+//$color-secondary:       rgba(#390ABA, 1);
+$color-tertiary:        rgba(#0005B2, 1);
 $color-neutral:         rgba(#E0E0E0, 1);
 $color-dark:            rgba(#333, 1);
 
@@ -10,7 +12,8 @@ $color-bg-neutral:      rgba(#E0E0E0, 1);
 $color-bg-dark:         rgba(#222, 1);
 $color-bg-light:        rgba(#F0F0F0, 1);
 $color-bg-hilite:       rgba(#FFF, 1);
-$color-bg-primary:      rgba(#00AEEF, 1);
+$color-bg-primary:      darken($color-primary, 10%);
+$color-bg-secondary:    darken($color-secondary, 10%);
 $color-bg-overlay:      rgba(#000, .5);
 
 $color-text:            rgba(#666, 1);
@@ -26,7 +29,7 @@ $color-layout:          rgba(#DDD, 1);
 $color-layout-light:    lighten($color-layout, 20%);
 $color-layout-dark:     darken($color-layout, 20%);
 
-$color-nectd:           rgba(#3b5998, 1);
+$color-nectd:           $color-primary;
 $color-facebook:        rgba(#3b5998, 1);
 $color-twitter:         rgba(#00aced, 1);
 $color-google:          rgba(#dd4b39, 1);

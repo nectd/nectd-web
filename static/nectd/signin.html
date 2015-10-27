@@ -83,6 +83,8 @@ Author URL: http://nectd.com
 				    Problem with your account? <span class="caret"></span>
 				  </a>
 				  <ul class="dropdown-menu">
+				    <li><a href="/validate">Already have a <strong class="strong">PIN</strong>? Activate your account</a></li>
+				    <li role="separator" class="divider"></li>
 				    <li><a href="/recover">Forgot your password ?</a></li>
 				    <li><a href="/reclaim">How to reclaim an already taken handle</a></li>
 				    <li role="separator" class="divider"></li>
@@ -107,10 +109,11 @@ Author URL: http://nectd.com
 					<form>
 					  <div class="form-group">
 					    <label for="signin_phoneemail_input">Phone number or Email </label>
-					    <input type="email" class="form-control" id="signin_phoneemail_input" name="signin_phoneemail_input" placeholder="Phone or Email">
+					    <input type="text" class="form-control" id="signin_phoneemail_input" name="signin_phoneemail_input" placeholder="Phone or Email">
 					  </div>
 					  <div class="form-group">
 					    <label for="signin_password_input">Password</label>
+					    <button type="button" class="btn btn-link fineprint fr p0 m0 toggle_showpassword">show</button>
 					    <input type="password" class="form-control" id="signin_password_input" name="signin_password_input" placeholder="Password">
 					  </div>
 					  <div class="checkbox">
@@ -138,7 +141,7 @@ Author URL: http://nectd.com
 						<div class="form-group">
 							<button type="button" class="btn btn-lg btn-default btn-google btn-block fa fa-google-plus-square"> Login with Google</button>
 						</div>
-						<p class="fineprint">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
+						<p class="fineprint p1">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
 					</form>
 				</div>
 			</div>
@@ -154,7 +157,7 @@ Author URL: http://nectd.com
 			<div id="bottom_footer" class="bottom_footer container">
 				<div class="row">
 					<div class="col-xs-10">
-						<p class="mt3">© nectd 2015 - made with <i class="fa fa-heart"></i> by smart people in Bologna and San Francisco </p>
+						<p class="mt3">© nectd 2015 - made with <i class="fa fa-heart hilite-secondary"></i> by smart people in Bologna and San Francisco </p>
 					</div>
 					<div class="col-xs-2">
 						<p class="mt3"><a class="subtle" href="/status">Server Status: <i id="serverstatus_off">offline</i><i id="serverstatus_on" class="hidden">online</i></a></p>

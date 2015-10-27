@@ -117,19 +117,20 @@ Author URL: http://nectd.com
 									<form>
 										<div class="form-group col-xs-6 pl0 pr1">
 										    <label for="register_firstname_input">Your first name</label>
-										    <input type="text" class="form-control" id="register_firstname_input" name="register_lastname_input" placeholder="First name">
+										    <input type="text" class="form-control" name="register_lastname_input" placeholder="First name">
 									  	</div>
 									  	<div class="form-group col-xs-6 pl1 pr0 ">
 										    <label for="register_lastname_input">Your last name</label>
-										    <input type="text" class="form-control" id="register_lasttname_input" name="register_lastname_input" placeholder="Last name">
+										    <input type="text" class="form-control" name="register_lastname_input" placeholder="Last name">
 									  	</div>
 										<div class="form-group">
 											<label for="register_phoneemail_input">Enter a mobile number or email</label>
-											<input type="text" class="form-control" id="register_phoneemail_input" name="register_phoneemail_input" placeholder="Phone or Email">
+											<input type="text" class="form-control" name="register_phoneemail_input" placeholder="Phone or Email">
 										</div>
 										<div class="form-group">
 											<label for="register_password_input">Choose a password</label>
-											<input type="password" class="form-control" id="register_password_input" name="register_password_input" placeholder="Password">
+											<button type="button" class="btn btn-link fineprint fr p0 m0 toggle_showpassword">show</button>
+											<input type="password" class="form-control" name="register_password_input" placeholder="Password">
 											<p class="fineprint">must have at least 3 chars, one number, one capital</p>
 										</div>
 										<button type="button" id="register-step1-btn"  class="btn btn-lg btn-primary btn-block mb2">Register</button>
@@ -142,11 +143,11 @@ Author URL: http://nectd.com
 							    	<form>
 							    		<div class="form-group">
 											<label for="register_companyname_input">About your company</label>
-											<input type="text" class="form-control" id="register_companyname_input" name="register_companyname_input" placeholder="Company or business name">
+											<input type="text" class="form-control" name="register_companyname_input" placeholder="Company or business name">
 										</div>
 										<div class="form-group">
 											<label for="register_vat_input">Your company VAT ID and registered country</label>
-										    <input type="text" class="form-control" id="register_vat_input" name="register_vat_input" placeholder="VAT ID">
+										    <input type="text" class="form-control" name="register_cvat_input" placeholder="VAT ID">
 									  	</div>
 									  	<div class="form-group">
 									  		<div id="countries_states" class="bfh-selectbox bfh-countries" data-country="US" data-flags="true" data-filter="true"></div>
@@ -154,19 +155,19 @@ Author URL: http://nectd.com
 										</div>
 										<div class="form-group col-xs-6 pl0 pr1">
 										    <label for="register_firstname_input">Your first name</label>
-										    <input type="text" class="form-control" id="register_firstname_input" name="register_lastname_input" placeholder="First name">
+										    <input type="text" class="form-control" name="register_lastname_input" placeholder="First name">
 									  	</div>
 									  	<div class="form-group col-xs-6 pl1 pr0 ">
 										    <label for="register_lastname_input">Your last name</label>
-										    <input type="text" class="form-control" id="register_lasttname_input" name="register_lastname_input" placeholder="Last name">
+										    <input type="text" class="form-control" name="register_lastname_input" placeholder="Last name">
 									  	</div>
 										<div class="form-group">
 											<label for="register_phoneemail_input">A corporate mobile or email you can access</label>
-											<input type="text" class="form-control" id="register_phoneemail_input" name="register_phoneemail_input" placeholder="Phone or Email">
+											<input type="text" class="form-control" name="register_phoneemail_input" placeholder="Phone or Email">
 										</div>
 										<div class="form-group">
 											<label for="register_password_input">Choose a password</label>
-											<input type="password" class="form-control" id="register_password_input" name="register_password_input" placeholder="Password">
+											<input type="password" class="form-control" name="register_password_input" placeholder="Password">
 											<p class="fineprint">must have at least 3 chars, one number, one capital</p>
 										</div>
 										<button type="button" id="register-step2-btn" class="btn btn-lg btn-primary btn-block mb2">Register</button>
@@ -180,22 +181,28 @@ Author URL: http://nectd.com
 						</div>
 			
 						<div class="col-md-5">
-							<h1>OR</h1>
-							<form>
-								<div class="form-group">
-									<button type="button" class="btn btn-lg btn-default btn-facebook btn-block fa fa-facebook-square"> Login with Facebook</button>
-								</div>
-								<div class="form-group">
-									<button type="button" class="btn btn-lg btn-default btn-twitter btn-block fa fa-twitter-square"> Login with Twitter</button>
-								</div>
-								<div class="form-group">
-									<button type="button" class="btn btn-lg btn-default btn-google btn-block fa fa-google-plus-square"> Login with Google</button>
-								</div>
-								<p class="fineprint">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
+							<div id="section-a">
+								<h1>OR</h1>
+								<form>
+									<div class="form-group">
+										<button type="button" class="btn btn-lg btn-default btn-facebook btn-block fa fa-facebook-square"> Login with Facebook</button>
+									</div>
+									<div class="form-group">
+										<button type="button" class="btn btn-lg btn-default btn-twitter btn-block fa fa-twitter-square"> Login with Twitter</button>
+									</div>
+									<div class="form-group">
+										<button type="button" class="btn btn-lg btn-default btn-google btn-block fa fa-google-plus-square"> Login with Google</button>
+									</div>
+									<p class="fineprint py2">Note: We will never post anything on your behalf and we will never hassle your friends without your consense.</p>
 
-								<p class="fineprint">By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>, including <a href="/cookies">Cookie Use</a>. Others will be able to find you by email or phone number when provided.</p>
-										
-							</form>
+									<p class="fineprint py2">By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>, including <a href="/cookies">Cookie Use</a>. Others will be able to find you by email or phone number when provided.</p>
+											
+								</form>
+							</div>
+							<div id="section-b" class="hidden">
+								
+							</div>
+							
 						</div>
 
 					</div>
@@ -207,7 +214,7 @@ Author URL: http://nectd.com
 							<p>Just write the code you will receive in the field below to confirm that you are the owner of that contact detail.</p>
 							<p>If you don't receive any code within 15 minutes, feel free to request another one</p>
 
-							<form>
+							<form class="py2">
 								<div class="form-group">
 									<label for="confirm_code_input">Write here the code you received.</label>
 									<input type="text" class="form-control" id="confirm_code_input" name="confirm_code_input" placeholder="Enter the code">
@@ -231,7 +238,7 @@ Author URL: http://nectd.com
 			<div id="bottom_footer" class="bottom_footer container">
 				<div class="row">
 					<div class="col-xs-10">
-						<p class="mt3">© nectd 2015 - made with <i class="fa fa-heart"></i> by smart people in Bologna and San Francisco </p>
+						<p class="mt3">© nectd 2015 - made with <i class="fa fa-heart hilite-secondary"></i> by smart people in Bologna and San Francisco </p>
 					</div>
 					<div class="col-xs-2">
 						<p class="mt3"><a class="subtle" href="/status">Server Status: <i id="serverstatus_off">offline</i><i id="serverstatus_on" class="hidden">online</i></a></p>

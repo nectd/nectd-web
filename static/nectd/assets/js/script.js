@@ -81,6 +81,31 @@ var nectd = {
         step1.removeClass("animated slideOutLeft slideInLeft").addClass("animated slideInLeft");
         step2.removeClass("animated slideInRight slideOutRight").addClass("animated slideOutRight");
       });
+
+      $(".toggle_showpassword").hover(function(){
+        var $this = $(this);
+        if (!$this.hasClass("on")){
+          $this.next('input').attr("type", "text")
+        }
+      }, function(){
+        var $this = $(this);
+        if (!$this.hasClass("on")){
+          $this.next('input').attr("type", "password")
+        }
+      });
+      /*.click(function(){
+        var $this = $(this);
+        if ($this.hasClass("on")){
+          $this.removeClass("on").text("show");
+          $this.next('input').attr("type", "text")
+        }else{
+          $this.addClass("on").text("hide");
+          $this.next('input').attr("type", "password")
+        }
+
+      });*/
+
+
     }
     if(!!currentPage && currentPage.indexOf("ERROR") >= 0){
       $("#error_action_1").click(function(e){

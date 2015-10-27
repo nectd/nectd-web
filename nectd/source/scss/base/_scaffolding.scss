@@ -12,7 +12,7 @@ body {
 }
 
 a {
-    @include background-color-transition;
+    @include color-transition;
 
     color: $color-text-primary;
 
@@ -57,7 +57,7 @@ img{
 }
 
 .btn, .btn-lng{
-	@include background-color-transition;
+	@include color-transition;
 	border-radius: 0;
 	&:focus{
 		outline: 0 !important;
@@ -81,13 +81,24 @@ img{
 		background-color: $color-primary;
 		border-color: $color-primary;
 		&:hover{
-			background-color: darken($color-primary, 20%);
-			border-color: darken($color-primary, 20%);
+			//background-color: darken($color-primary, 20%);
+			//border-color: darken($color-primary, 20%);
+			background-color: $color-secondary;
+			border-color: $color-secondary;
+		}
+	}
+	&.btn-secondary{
+		background-color: $color-secondary;
+		border-color: $color-secondary;
+		color: $color-text-contrast;
+		&:hover{
+			background-color: darken($color-secondary, 20%);
+			border-color: darken($color-secondary, 20%);
 		}
 	}
 	&.selected{
-		background-color: darken($color-primary, 20%);
-		border-color: darken($color-primary, 20%);
+		background-color: $color-secondary;
+		border-color: $color-secondary;
 		color: $color-text-contrast;
 	}
 	&.btn-default.btn-facebook{
@@ -123,6 +134,18 @@ img{
 		&:hover, &:focus, &:active{
 			background-color: darken($color-google, 20%);
 			border-color: darken($color-google, 20%);
+			color: $color-text-contrast;
+		}
+	}
+	&.btn-default.btn-nectd{
+		background-color: $color-primary;
+		border-color: $color-primary;
+		color: $color-text-contrast;
+		text-align: left;
+		padding-left: 3em;
+		&:hover, &:focus, &:active{
+			background-color: darken($color-primary, 20%);
+			border-color: darken($color-primary, 20%);
 			color: $color-text-contrast;
 		}
 	}
@@ -175,7 +198,6 @@ img{
 .fineprint{
 	font-size: $font-size-small;
 	color: $color-text-subtle;
-	padding: 5px 0;
 }
 
 h1, .h1{
@@ -200,6 +222,19 @@ h2{
 	font-size: $font-size-medium;
 	color: $color-text-dark;
 	font-weight: 700;
+}
+
+
+.hilite{
+	color: $color-primary !important;
+}
+
+.hilite-secondary{
+	color: $color-secondary !important;
+}
+
+.strong{
+	font-weight: 700 !important;
 }
 
 /* BUTTONS 
@@ -312,6 +347,9 @@ input[type="text"]{
  	margin-bottom: 0px;
 	min-height: 85px;
 	.navbar-brand{
+ 		img{
+			height: 40px;
+ 		}
 		margin-top:	8px;
 	}
 	&.backnav .navbar-brand{
@@ -322,6 +360,7 @@ input[type="text"]{
 	}
  	.navbar-nav{
  		padding-top: 18px;
+
  		> li.open{
  			&:after{
 	  			background-color: $color-primary;
@@ -365,16 +404,20 @@ input[type="text"]{
 		  			height: 10px;
 		  		}
 		  	}
-
-		  	&.active:after{
-	  			background-color: $color-primary;
-			  	bottom: -16px;
-			  	content: "";
-			  	height: 5px;
-			  	left: 0;
-			  	position: absolute;
-			  	width: 100%;
-	  		}
+		  	&.active{
+		  		a, a:hover{
+		  			background-color: $color-bg;
+		  		}
+		  		&:after{
+		  			background-color: $color-primary;
+				  	bottom: -16px;
+				  	content: "";
+				  	height: 5px;
+				  	left: 0;
+				  	position: absolute;
+				  	width: 100%;
+		  		}
+		  	}
 		}
 		&.navbar-right{
 			padding-top: 18px;
@@ -430,6 +473,7 @@ input[type="text"]{
 		img{
 			margin-top: -6px;
     		margin-left: -6px;
+    		width: 100px;
 		}
 	}
 	h3{
@@ -469,13 +513,34 @@ input[type="text"]{
 				}
 			}
 		}
+		&.appstores{
+			margin-top: 20px;
+			li{
+				display: inline-block;
+				a{
+					opacity: 0.6;
+					&:hover{
+						opacity: 1;
+					}
+				}
+				img{
+					width: 110px;
+
+				}
+			}
+			
+		}
 	}
 }
 
 .bottom_footer{
 	padding-bottom: 0.5em;
 	p{
+		@include color-transition;
 		color: $color-text-subtle;
+		&:hover{
+			color: $color-text-secondary;
+		}
 	}
 }
 /* END FOOTER */
@@ -603,7 +668,8 @@ section{
 /* START ENGAGE */
 
 .engage{
-	background-color: darken($color-bg-primary, 10%);
+	background-color: $color-bg-primary;
+	@include linear-gradient(45deg, $color-bg-primary, $color-bg-secondary);
 	.card{
 		height:	90px;
 	}
@@ -667,6 +733,102 @@ section{
 ========================= */
 
 
+/* START Pricing */
+
+.pricing {
+  padding: 100px 0;
+}
+.pricing-table {
+  border: 1px solid #f2f2f2;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.pricing-table .pricing-header .pt-price {
+  font-family: "Oswald";
+  color: #4c4c4c;
+  font-size: 40px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 40px;
+}
+.pricing-table .pricing-header .pt-price small {
+  font-size: 13px;
+  color: #9a9a9a;
+  font-weight: 300;
+}
+.pricing-table .pricing-header .pt-name {
+  font-family: "Oswald";
+  padding: 10px 40px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 40px;
+  color: #4c4c4c;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+.pricing-table .pricing-body ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pricing-table .pricing-body ul li {
+  padding: 8px 25px;
+  margin: 0;
+}
+.pricing-table .pricing-body ul li:nth-child(even) {
+  background-color: #fafafa;
+}
+.pricing-table .pricing-body ul li .fa-times {
+  color: #ff6666;
+}
+.pricing-table .pricing-body ul li .fa-check {
+  color: #4ecdc4;
+}
+.pricing-table .pricing-footer {
+  text-align: center;
+  padding: 15px 40px;
+  border-top: 1px solid #f2f2f2;
+}
+.pricing-table.featured .pricing-header {
+  position: relative;
+  overflow: hidden;
+}
+.pricing-table.featured .pricing-header .pt-price {
+  color: #4ecdc4;
+}
+.pricing-table.featured .pricing-header .pt-price small {
+  color: #4ecdc4;
+}
+.pricing-table.featured .pricing-header .pt-name {
+  color: #4ecdc4;
+}
+.pricing-table.featured .pricing-header .featured-text {
+  font-family: "Oswald";
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #4ecdc4;
+  color: #fff;
+  position: absolute;
+  top: 22px;
+  left: -28px;
+  padding: 5px 0;
+  width: 126px;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+
+
+/* END Pricing */
+
+
 /* START UTILITY 
 ========================= */
 
@@ -684,16 +846,4 @@ section{
 
 /* END UTILITY 
 ========================= */
-
-
-
-
-
-
-
-
-
-
-
-
 

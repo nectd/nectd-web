@@ -30,7 +30,7 @@
     -webkit-animation-duration: 0.4s;
     animation-duration: 0.4s;
 }
-@mixin background-color-transition{
+@mixin color-transition{
     -webkit-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
     -webkit-transition-duration: .2s;
@@ -84,4 +84,16 @@
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
 }

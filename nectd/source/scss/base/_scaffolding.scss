@@ -736,7 +736,7 @@ section{
 /* START Pricing */
 
 .pricing {
-  padding: 100px 0;
+  padding: 2em 0;
 }
 .pricing-table {
   border: 1px solid #f2f2f2;
@@ -744,7 +744,6 @@ section{
   background-color: #fff;
 }
 .pricing-table .pricing-header .pt-price {
-  font-family: "Oswald";
   color: #4c4c4c;
   font-size: 40px;
   line-height: 70px;
@@ -758,7 +757,6 @@ section{
   font-weight: 300;
 }
 .pricing-table .pricing-header .pt-name {
-  font-family: "Oswald";
   padding: 10px 40px;
   text-align: center;
   font-weight: 300;
@@ -781,10 +779,10 @@ section{
   background-color: #fafafa;
 }
 .pricing-table .pricing-body ul li .fa-times {
-  color: #ff6666;
+  color: $color-secondary;
 }
 .pricing-table .pricing-body ul li .fa-check {
-  color: #4ecdc4;
+  color: $color-primary;
 }
 .pricing-table .pricing-footer {
   text-align: center;
@@ -805,14 +803,13 @@ section{
   color: #4ecdc4;
 }
 .pricing-table.featured .pricing-header .featured-text {
-  font-family: "Oswald";
   font-size: 13px;
   line-height: 15px;
   letter-spacing: 1px;
   font-weight: 300;
   text-transform: uppercase;
   text-align: center;
-  background-color: #4ecdc4;
+  background-color: $color-primary;
   color: #fff;
   position: absolute;
   top: 22px;

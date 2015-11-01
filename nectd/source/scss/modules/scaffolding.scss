@@ -10,3 +10,14 @@ body {
     background-color: $bg-color;
     color: $brand-color;
 }
+
+button, .button {
+    border: none;
+    border-radius: $radius-small;
+    background: $default-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($default-color, 20%);
+    }
+}

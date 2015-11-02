@@ -1,3 +1,7 @@
+.nectd-mockup {
+    background: lighten($color-primary, 30%);
+}
+
 .nectd-container-wrapper {
     border-radius: $card-border-radius;
     box-shadow: 0 0 0 $card-outline-width $card-outline;

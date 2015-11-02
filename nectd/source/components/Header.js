@@ -18,6 +18,7 @@ export default class Header extends React.Component {
         let topRight = {
             "starting": "",
             "connected": <UserInfo/>,
+            "not_authorized": <LoginBar/>,
             "unknown": <LoginBar/>
         }[API.loginStatus];
 

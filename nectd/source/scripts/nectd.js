@@ -66,8 +66,10 @@ class NectdAPI extends EventEmitter {
     logout() {
         if (status !== "ready") return false;
 
-        this.emit("logout");
+        this.userInfo = null;
         Nectd.logout();
+        fetchLoginStatus(this);
+        this.emit("logout");
     }
 
     api(name, method, payload) {

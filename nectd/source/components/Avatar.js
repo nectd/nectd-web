@@ -3,6 +3,6 @@ import Icon from "./Icon";
 
 export default class Avatar extends React.Component {
     render() {
-        return <span className="user-avatar"><Icon type="user" profileId={this.props.profileId}/></span>
+        return <span className="user-avatar" data-profile-id={this.props.profileId}><Icon type="user"/></span>
     }
 };

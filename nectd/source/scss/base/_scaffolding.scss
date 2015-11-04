@@ -4,11 +4,14 @@
 
 /* COMMON LAYOUT
 ========================= */
+html, body { height: 100%; }
+
 body {
     font-size: $font-base-size;
     font-family: $font-sans-serif;
     background-color: $color-bg;
     color: $color-text;
+    margin: 0;
 }
 
 a {

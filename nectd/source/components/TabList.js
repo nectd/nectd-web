@@ -2,19 +2,13 @@ import React from "react";
 import Tab from "./Tab";
 
 export default class TabList extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            tabs: [{
-                icon: "user"
-            }, {
-                icon: "users"
-            }]
-        }
-    }
     render() {
+        var tabs = this.props.loginStatus === "connected"
+            ? [ { icon: "user" }, { icon: "users" } ]
+            : [];
+
         return <div className="tab-list">
-            {this.state.tabs.map((tab, i) => <Tab info={tab} key={i}/>)}
+            {tabs.map((tab, i) => <Tab info={tab} key={i}/>)}
         </div>
     }
 };

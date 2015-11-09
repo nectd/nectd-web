@@ -1,4 +1,5 @@
-var gulp = require("gulp");
+var gulp = require("gulp"),
+    gutil = require("gulp-util");
 
 var sourceDir = "./nectd/source/",
     themeDir = "./theme/nectd-2015/",
@@ -49,6 +50,10 @@ gulp.task("build-js", function() {
             transform: [ babelify ]
         })
         .bundle()
+        .on("error", function(e) {
+            gutil.log(e.message);
+            this.emit("end");
+        })
         .pipe(source("nectd-app.js"))
         // .pipe(buffer())
         // .pipe(sourcemaps.init({loadMaps: true}))

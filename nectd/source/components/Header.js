@@ -2,28 +2,18 @@ import React from "react";
 import Logo from "./Logo";
 import UserInfo from "./UserInfo";
 import LoginBar from "./LoginBar";
-import API from "../scripts/nectd";
 
 export default class Header extends React.Component {
-    constructor() {
-        super();
-
-        this.state = { loginStatus: API.loginStatus };
-        API.on("loginStatus", (status) => {
-            this.setState({ loginStatus: status });
-        })
-    }
-
     render() {
         let topRight = {
             "starting": "",
-            "connected": <UserInfo/>,
-            "not_authorized": <LoginBar/>,
-            "unknown": <LoginBar/>
-        }[API.loginStatus];
+            "connected": <UserInfo status={this.props.status} loginStatus={this.props.loginStatus}/>,
+            "not_authorized": <LoginBar status={this.props.status}/>,
+            "unknown": <LoginBar status={this.props.status}/>
+        }[this.props.loginStatus];
 
         return <div className="header-top">
-            <Logo />
+            <Logo/>
             {topRight}
         </div>
     }

@@ -44,6 +44,9 @@ class NectdAPI extends EventEmitter {
                 this.emit("fail");
             });
         }
+
+        this.userData = {};
+        this.requests = {};
     }
 
     get status() {
@@ -66,10 +69,14 @@ class NectdAPI extends EventEmitter {
     logout() {
         if (status !== "ready") return false;
 
-        this.userInfo = null;
+        delete this.userData.profiles;
         Nectd.logout();
+
+        loginStatus = "logout";
         fetchLoginStatus(this);
+
         this.emit("logout");
+        this.emit("loginStatus", "logout");
     }
 
     api(name, method, payload) {
@@ -91,15 +98,23 @@ class NectdAPI extends EventEmitter {
         return this.api(name, "DELETE");
     }
 
-    fetchUserInfo() {
+    fetchUserData(what, prop = what) {
         if (loginStatus !== "connected")
             return Promise.reject();
 
-        if (this.userInfo)
-            return Promise.resolve(this.userInfo);
+        if (this.userData[prop])
+            return Promise.resolve(this.userData[prop]);
 
-        return this.get("account/profiles")
-            .then((info) => this.userInfo = info);
+        if (this.requests[what])
+            return this.requests[what];
+
+        var request = this.requests[what] = this.get(`account/${what}`)
+            .then((data) => {
+                delete this.requests[what];
+                return this.userData[prop] = data;
+            });
+
+        return request;
     }
 }
 

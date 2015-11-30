@@ -1,19 +1,34 @@
 // Colors
 $default-color: #aaa;
 
+$inactive-color: #aaa;
+$darkening-color: rgba(0, 0, 0, .35);
+
 $brand-color: #323c3c;
 $bg-color: #a2cade;
 
 $root-font-size: 16px;
 $font-stack: Arial, Helvetica, sans-serif;
 
-$material-shadow: 0 1px 1px rgba(0, 0, 0, .35);
-$radius-base: 1rem / 4;
-$radius-small: 1rem / 8;
-
+$material-shadow: 0 1px 1px $darkening-color;
+$material-right-shadow: 1px 1px 1px $darkening-color;
 $minimum-width: 1000px;
 
 $avatar-bg: #ccc;
+
+// Lengths
+$radius-base: 1rem / 4;
+$radius-small: 1rem / 8;
+
+$padding-small-v: .1rem;
+$padding-small-h: .25rem;
+$padding-small: $padding-small-v $padding-small-h;
+$padding-base-v: .25rem;
+$padding-base-h: .5rem;
+$padding-base: $padding-base-v $padding-base-h;
+$padding-large-v: .5rem;
+$padding-large-h: 1rem;
+$padding-large: $padding-large-v $padding-large-h;
 
 // Header
 $header-height: 3rem;
@@ -21,7 +36,8 @@ $header-bg: white;
 
 // User list
 $userlist-width-ratio: .2;
-$userlist-background: rgba(black, .1);
+$userlist-background: white;
+$userlist-item-height: 3rem;
 
 $userbox-bg: #eee;
 
@@ -30,4 +46,8 @@ $group-background: white;
 
 // Tab List
 $tab-list-width: 3rem;
-$tab-list-bg: rgba(0, 0, 0, .25);
+$tab-list-bg: $darkening-color;
+
+// Dialogs
+$dialog-backdrop: $darkening-color;
+$dialog-bg: white;

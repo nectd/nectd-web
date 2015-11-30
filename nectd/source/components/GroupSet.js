@@ -7,7 +7,7 @@ export default class GroupSet extends React.Component {
     fetchGroups() {
         if (this.props.loginStatus === "connected")
             API.fetchUserData("groups")
-                .then((groups) => {
+                .then(groups => {
                     this.setState({ groups: groups });
                 });
     }
@@ -17,8 +17,8 @@ export default class GroupSet extends React.Component {
 
         if (groups) {
             return <div className="group-set">
-                {groups.map(
-                    (group) => <Group key={group.groupId} group={group}/>
+                {groups.filter(group => !group.default).map(
+                    group => <Group key={group.groupId} group={group}/>
                 )}
                 <button type="button">New list</button>
             </div>

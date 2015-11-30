@@ -1,11 +1,9 @@
 .tab-list {
-    position: fixed;
+    float: left;
     top: $header-height;
-    left: 0;
     width: $tab-list-width;
-    bottom: 0;
     background: $tab-list-bg;
-    // display: flex;
+    height: calc(100vh - #{$header-height});
 }
 
 .main-tab {

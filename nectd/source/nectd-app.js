@@ -1,27 +1,35 @@
 import React from "react";
 import ThePage from "./components/ThePage";
 import DialogBox from "./components/DialogBox";
-
-var isDOMReady = false;
+import ContactSearch from "./components/ContactSearch";
 
 class NectdApp {
+    constructor() {
+        if (App) throw new Error("There can be only one!");
+    }
+
+    render(props = null, content = "") {
+        React.render(<ThePage {...props}>{content}</ThePage>, document.body);
+    }
+
     showDetails(show = true) {
-        React.render(<ThePage detailShow={show}/>, document.body);
+        this.render({ detailShow: show });
     }
 
     newContact() {
-        React.render(<ThePage>
-            <DialogBox dialogTitle="New contact">
-                <h5>Search contact</h5>
-                <input type="search"/>
+        this.render(
+            null,
+            <DialogBox dialogTitle="New contact" onClose={() => this.render()}>
+                <ContactSearch onContactClick={contact => console.log("Weeeh", contact)}/>
             </DialogBox>
-        </ThePage>, document.body);
+        );
     }
 }
 
+var App = new NectdApp();
+
 document.addEventListener("DOMContentLoaded", () => {
-    isDOMReady = true;
-    React.render(<ThePage/>, document.body);
+    App.render();
 });
 
-export default new NectdApp();
+export default App;

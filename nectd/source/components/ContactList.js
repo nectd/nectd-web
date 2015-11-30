@@ -23,7 +23,7 @@ export default class ContactList extends React.Component {
                 {contacts.handles.map(
                     (contact, index) => <Contact key={index} contact={contact}/>
                 )}
-                <button type="button" onClick={App.newContact}>New contact</button>
+                <button type="button" onClick={App.newContact.bind(App)}>New contact</button>
             </div>
         } else if (this.props.loginStatus === "connected") {
             this.fetchContacts();

@@ -1,12 +1,27 @@
 import React from "react";
 import UserBox from "./UserBox";
+import Spinner from "./Spinner";
+import API from "../scripts/nectd";
+import App from "../nectd-app";
 
 export default class Group extends React.Component {
+    deleteGroup() {
+        this.setState({ removing: true });
+        API.delete("account/groups/" + this.props.group.groupId)
+            .then(() => {
+                delete API.userData.groups;
+                App.render();
+            });
+    }
+
     render() {
         var description = this.props.group.description || "List " + this.props.group.groupId;
 
+        var btn = this.state && this.state.removing ? <Spinner/>
+                : <button type="button" className="group-action fa fa-times" onClick={() => this.deleteGroup()}></button>;
+
         return <div className="group" data-group-id={this.props.group.groupId}>
-            <button className="group-action fa fa-cog pull-right"></button>
+            <div className="pull-right">{btn}</div>
             <div className="group-header">{description}</div>
             {this.props.group.handles.map(
                 (user) => <UserBox key={user.handleId} user={user}/>

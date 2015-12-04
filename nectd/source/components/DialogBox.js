@@ -8,11 +8,13 @@ export default class DialogBox extends React.Component {
 
     render() {
         var title = this.props.dialogTitle
-                ? <div className="dialog-title">{this.props.dialogTitle}</div> : "";
+                ? <div className="dialog-title">{this.props.dialogTitle}</div> : "",
+            closeBtn = this.props.noClose ? ""
+                : <button type="button" className="dialog-close fa fa-times" onClick={this.closeClick.bind(this)}/>;
 
         return <div className="dialog-backdrop">
             <div className="dialog-box">
-                <button type="button" className="dialog-close fa fa-times" onClick={this.closeClick.bind(this)}/>
+                {closeBtn}
                 {title}
                 {this.props.children}
             </div>

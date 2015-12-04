@@ -16,7 +16,7 @@ export default class ContactList extends React.Component {
     }
 
     render() {
-        var contacts = this.state && this.state.contacts;
+        var contacts = this.state && API.userData.groups && this.state.contacts;
 
         if (contacts) {
             return <div className="user-list">

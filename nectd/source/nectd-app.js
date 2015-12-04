@@ -25,7 +25,6 @@ class NectdApp {
                 if (!contactList) return;
 
                 var addContact = contact => {
-                    delete API.userData.groups;
                     this.render(
                         null,
                         <DialogBox dialogTitle="New contact" noClose={true}>
@@ -34,7 +33,10 @@ class NectdApp {
                     );
 
                     API.post(`account/groups/${contactList.nodeId}/contacts/${contact.content[0].nodeId}`)
-                        .then(() => this.render());
+                        .then(() => {
+                            delete API.userData.groups;
+                            this.render();
+                        });
                 };
 
                 this.render(
@@ -44,6 +46,42 @@ class NectdApp {
                     </DialogBox>
                 );
             });
+    }
+
+    newGroup() {
+        var nameFld, descrFld;
+        var addGroup = () => {
+            var name = nameFld.value,
+                description = descrFld.value;
+
+            if (!name || !description) return;
+
+            this.render(
+                null,
+                <DialogBox dialogTitle="New group" noClose={true}>
+                    <Spinner/>
+                </DialogBox>
+            );
+
+            API.post("account/groups/create?sharable=true", { name, description })
+                .then(() => {
+                    delete API.userData.groups;
+                    this.render();
+                });
+        };
+
+        this.render(
+            null,
+            <DialogBox dialogTitle="New group" onClose={() => this.render()}>
+                <label>Name <input type="text" ref={input => {
+                    if (input) nameFld = input.getDOMNode()
+                }}/></label><br/>
+                <label>Description <input type="text" ref={input => {
+                    if (input) descrFld = input.getDOMNode()
+                }}/></label><br/>
+                <button type="button" onClick={() => addGroup()}>Save</button>
+            </DialogBox>
+        );
     }
 }
 

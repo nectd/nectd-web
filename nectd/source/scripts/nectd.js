@@ -46,6 +46,7 @@ class NectdAPI extends EventEmitter {
         }
 
         this.userData = {};
+        this.userGroups = {};
         this.requests = {};
     }
 
@@ -69,7 +70,8 @@ class NectdAPI extends EventEmitter {
     logout() {
         if (status !== "ready") return false;
 
-        delete this.userData.profiles;
+        this.userData = {};
+        this.userGroups = {};
         Nectd.logout();
 
         loginStatus = "logout";
@@ -111,8 +113,32 @@ class NectdAPI extends EventEmitter {
         var request = this.requests[what] = this.get(`account/${what}`)
             .then((data) => {
                 delete this.requests[what];
-                return this.userData[prop] = data;
+                this.userData[prop] = data;
+                this.emit(`${what}Load`, data);
+                return data;
             });
+
+        return request;
+    }
+
+    fetchGroup(id) {
+        if (loginStatus !== "connected")
+            return Promise.reject();
+
+        if (this.userGroups[id])
+            return Promise.resolve(this.userGroups[id]);
+
+        var what = `group-${id}`;
+        if (this.requests[what])
+            return this.requests[what];
+
+        var request = this.requests[what] = this.get(`graph/groups/${id}/contacts`)
+            .then((data) => {
+                delete this.requests[what];
+                this.userGroups[id] = data;
+                this.emit(`groupLoad`, data, id);
+                return data;
+            }, console.error.bind(console));
 
         return request;
     }

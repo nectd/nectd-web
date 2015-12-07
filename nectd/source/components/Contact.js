@@ -1,10 +1,11 @@
 import React from "react";
-import UserBox from "./UserBox";
+import Avatar from "./Avatar";
 
 export default class Contact extends React.Component {
     render() {
-        return <div className="user-contact" data-contact-id={this.props.contact.nodeId}>
-            {this.props.contact.firstName + " " + this.props.contact.lastName}
+        return <div className="user-contact" data-contact-id={this.props.nodeId}>
+            <Avatar user={this.props.nodeId}/>
+            {this.props.firstName + " " + this.props.lastName}
         </div>
     }
 };

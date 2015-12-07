@@ -7,7 +7,7 @@ export default class Header extends React.Component {
     render() {
         let topRight = {
             "starting": "",
-            "connected": <UserInfo status={this.props.status} loginStatus={this.props.loginStatus}/>,
+            "connected": <UserInfo {...this.props}/>,
             "not_authorized": <LoginBar status={this.props.status}/>,
             "unknown": <LoginBar status={this.props.status}/>
         }[this.props.loginStatus];

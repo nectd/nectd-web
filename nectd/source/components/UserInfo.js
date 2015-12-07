@@ -5,18 +5,10 @@ import Spinner from "./Spinner";
 import API from "../scripts/nectd";
 
 export default class UserInfo extends React.Component {
-    fetchProfiles() {
-        if (API.loginStatus === "connected")
-            API.fetchUserData("profiles")
-                .then((info) => {
-                    this.setState({ profiles: info });
-                });
-    }
-
     render() {
-        var profiles = this.state && this.state.profiles || API.userData.profiles;
+        var profiles = this.props.profiles;
 
-        if (profiles) {
+        if (Array.isArray(profiles)) {
             return <div className="user-info">
                 <Avatar profileId={profiles[0].profileId} />
                 <div className="user-name">
@@ -28,9 +20,8 @@ export default class UserInfo extends React.Component {
                         </span>}
                 </div>
             </div>
-        } else if (this.props.loginStatus === "connected") {
-            this.fetchProfiles();
-            return <div className="user-info"><Spinner/></div>
+        // } else if (profiles === "loading") {
+        //     return <div className="user-info"><Spinner/></div>
         }
 
         return <div className="user-info"/>

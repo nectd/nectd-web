@@ -10,7 +10,19 @@ class NectdApp {
         if (App) throw new Error("There can be only one!");
     }
 
-    render(props = null, content = "") {
+    get pageProps() {
+        return {
+            status: API.status,
+            loginStatus: API.loginStatus,
+            details: API.userData.details,
+            profiles: API.userData.profiles,
+            groups: API.userData.groups,
+            groupContacts: API.userGroups
+        };
+    }
+
+    render(props, content = "") {
+        props = Object.assign(this.pageProps, props);
         React.render(<ThePage {...props}>{content}</ThePage>, document.body);
     }
 
@@ -86,6 +98,29 @@ class NectdApp {
 }
 
 var App = new NectdApp();
+
+API
+    .on("status", () => App.render())
+    .on("loginStatus", status => {
+        if (status === "connected") {
+            API.fetchUserData("details");
+            API.fetchUserData("profiles");
+            API.fetchUserData("groups");
+        }
+        App.render();
+    })
+    .on("detailsLoad", () => App.render())
+    .on("profilesLoad", () => App.render())
+    .on("groupsLoad", groups => {
+        groups.forEach(group => {
+            API.fetchGroup(group.nodeId);
+        });
+        API.render();
+    })
+    .on("groupLoad", () => {
+        App.render();
+    })
+;
 
 document.addEventListener("DOMContentLoaded", () => {
     App.render();

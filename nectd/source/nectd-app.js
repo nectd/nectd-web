@@ -30,34 +30,34 @@ class NectdApp {
         this.render({ detailShow: show });
     }
 
-    newContact() {
-        API.fetchUserData("groups")
-            .then(groups => {
-                var contactList = groups.find(group => group.default);
-                if (!contactList) return;
+    searchContact(groupId) {
+        var addContact = contact => {
+            this.render(
+                null,
+                <DialogBox dialogTitle="New contact" noClose={true}>
+                    <Spinner/>
+                </DialogBox>
+            );
 
-                var addContact = contact => {
-                    this.render(
-                        null,
-                        <DialogBox dialogTitle="New contact" noClose={true}>
-                            <Spinner/>
-                        </DialogBox>
-                    );
+            this.addContact(groupId, contact.content[0].nodeId);
+        };
 
-                    API.post(`account/groups/${contactList.nodeId}/contacts/${contact.content[0].nodeId}`)
-                        .then(() => {
-                            delete API.userData.groups;
-                            this.render();
-                        });
-                };
+        this.render(
+            null,
+            <DialogBox dialogTitle="New contact" onClose={() => this.render()}>
+                <ContactSearch onContactClick={addContact}/>
+            </DialogBox>
+        );
+    }
 
-                this.render(
-                    null,
-                    <DialogBox dialogTitle="New contact" onClose={() => this.render()}>
-                        <ContactSearch onContactClick={addContact}/>
-                    </DialogBox>
-                );
-            });
+    addContact(groupId, contactId) {
+        API.post(`account/groups/${groupId}/contacts/${contactId}`)
+            .then(() => API.fetchGroup(groupId));
+    }
+
+    removeContact(groupId, contactId) {
+        API.delete(`account/groups/${groupId}/contacts/${contactId}`)
+            .then(() => API.fetchGroup(groupId));
     }
 
     newGroup() {
@@ -75,11 +75,7 @@ class NectdApp {
                 </DialogBox>
             );
 
-            API.post("account/groups/create?sharable=true", { name, description })
-                .then(() => {
-                    delete API.userData.groups;
-                    this.render();
-                });
+            this.createGroup(name, description);
         };
 
         this.render(
@@ -94,6 +90,24 @@ class NectdApp {
                 <button type="button" onClick={() => addGroup()}>Save</button>
             </DialogBox>
         );
+    }
+
+    createGroup(name, description) {
+        API.post("account/groups/create?sharable=true", { name, description })
+            .then(() => API.fetchUserData("groups"));
+    }
+
+    deleteGroup(groupId) {
+        API.delete(`account/groups/${groupId}`)
+            .then(() => API.fetchUserData("groups"));
+    }
+
+    isDataLoading(what) {
+        return !!API.requests[what];
+    }
+
+    isGroupLoading(id) {
+        return this.isDataLoading(`group-${id}`);
     }
 }
 
@@ -112,10 +126,21 @@ API
     .on("detailsLoad", () => App.render())
     .on("profilesLoad", () => App.render())
     .on("groupsLoad", groups => {
-        groups.forEach(group => {
-            API.fetchGroup(group.nodeId);
+        // Collecting groups id's and fetching missing user group data
+        var groupIds = groups.map(group => {
+            if (!(group.nodeId in API.userGroups))
+                API.fetchGroup(group.nodeId);
+
+            return group.nodeId;
         });
-        API.render();
+
+        // Removing stale group data
+        Object.keys(API.userGroups).forEach(id => {
+            if (groupIds.indexOf(+id) === -1)
+                delete API.userGroups[id];
+        });
+
+        App.render();
     })
     .on("groupLoad", () => {
         App.render();

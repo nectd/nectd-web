@@ -26,4 +26,10 @@
     border-bottom: 1px solid $userbox-bg;
 
     > .user-avatar { vertical-align: middle; }
+
+    .contact-action {
+        float: right;
+        background: none;
+        color: inherit;
+    }
 }

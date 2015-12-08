@@ -15,12 +15,11 @@
 }
 .group-header {
     font-weight: bold;
-    margin: -.5rem;
-    padding: .5rem 1rem 0;
+    margin-bottom: .5rem;
 }
 .group-action {
     border: 0 none;
     background: none;
     cursor: pointer;
-    color: #aaa;
+    color: inherit;
 }

@@ -7,31 +7,32 @@ import App from "../nectd-app";
 export default class Group extends React.Component {
     deleteGroup() {
         this.setState({ removing: true });
-        API.delete("account/groups/" + this.props.group.groupId)
-            .then(() => {
-                delete API.userData.groups;
-                App.render();
-            });
+        App.deleteGroup(this.props.nodeId);
     }
 
     render() {
-        var description = this.props.group.description || "List " + this.props.group.groupId;
+        var description = this.props.description || "List " + this.props.nodeId;
 
+        if (App.isGroupLoading(this.props.nodeId))
+            return <div className="group" data-group-id={this.props.nodeId}>
+                <div className="group-header">{description}</div>
+                <Spinner/>
+            </div>
+
+        var btn = "", contacts = [];
         if (this.props.contacts) {
-            var btn = this.state && this.state.removing ? <Spinner/>
-                    : <button type="button" className="group-action fa fa-times" onClick={() => this.deleteGroup()}></button>,
-                contacts = this.props.contacts;
-        } else {
-            var btn = "", contacts = [];
+            contacts = this.props.contacts;
+            btn = this.state && this.state.removing ? <Spinner/>
+                    : <button type="button" className="group-action fa fa-times" onClick={() => this.deleteGroup()}></button>;
         }
 
-
-        return <div className="group" data-group-id={this.props.group.groupId}>
+        return <div className="group" data-group-id={this.props.nodeId}>
             <div className="pull-right">{btn}</div>
             <div className="group-header">{description}</div>
             {contacts.map(
-                contact => <Contact key={contact.nodeId} {...contact}/>
+                contact => <Contact key={contact.nodeId} onRemove={() => App.removeContact(this.props.nodeId, contact.nodeId)} {...contact}/>
             )}
+            <button type="button" onClick={() => App.searchContact(this.props.nodeId)}>Add contact</button>
         </div>
     }
 };

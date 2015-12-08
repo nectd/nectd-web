@@ -100,12 +100,9 @@ class NectdAPI extends EventEmitter {
         return this.api(name, "DELETE");
     }
 
-    fetchUserData(what, prop = what) {
+    fetchUserData(what) {
         if (loginStatus !== "connected")
             return Promise.reject();
-
-        if (this.userData[prop])
-            return Promise.resolve(this.userData[prop]);
 
         if (this.requests[what])
             return this.requests[what];
@@ -113,7 +110,7 @@ class NectdAPI extends EventEmitter {
         var request = this.requests[what] = this.get(`account/${what}`)
             .then((data) => {
                 delete this.requests[what];
-                this.userData[prop] = data;
+                this.userData[what] = data;
                 this.emit(`${what}Load`, data);
                 return data;
             });
@@ -124,9 +121,6 @@ class NectdAPI extends EventEmitter {
     fetchGroup(id) {
         if (loginStatus !== "connected")
             return Promise.reject();
-
-        if (this.userGroups[id])
-            return Promise.resolve(this.userGroups[id]);
 
         var what = `group-${id}`;
         if (this.requests[what])

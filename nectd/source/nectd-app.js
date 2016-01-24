@@ -60,39 +60,22 @@ class NectdApp {
             .then(() => API.fetchGroup(groupId));
     }
 
-    newGroup() {
-        var nameFld, descrFld;
-        var addGroup = () => {
-            var name = nameFld.value,
-                description = descrFld.value;
+    editGroup(groupId) {
+        if (groupId) {
+            var group = API.getGroupById(groupId);
+            if (!group) return;
 
-            if (!name || !description) return;
+            var actionTitle = "Editing group",
+                dialogTitle = "Edit group",
+                deleteBtn = <button type="button" onClick={() => doDelete()}>Delete</button>;
+        } else {
+            var group = { name: "", description: "" };
 
-            this.render(
-                null,
-                <DialogBox dialogTitle="Creating group..." noClose={true}>
-                    <Spinner/>
-                </DialogBox>
-            );
+            var actionTitle = "Creating group",
+                dialogTitle = "New group",
+                deleteBtn = "";
+        }
 
-            this.createGroup(name, description);
-        };
-
-        this.render(
-            null,
-            <DialogBox dialogTitle="New group" onClose={() => this.render()}>
-                <label>Name <input type="text" ref={input => {
-                    if (input) nameFld = input.getDOMNode()
-                }}/></label><br/>
-                <label>Description <input type="text" ref={input => {
-                    if (input) descrFld = input.getDOMNode()
-                }}/></label><br/>
-                <button type="button" onClick={() => addGroup()}>Save</button>
-            </DialogBox>
-        );
-    }
-
-    editGroup(groupId, name, description) {
         var nameFld, descrFld;
         var doEdit = () => {
             var name = nameFld.value,
@@ -102,12 +85,13 @@ class NectdApp {
 
             this.render(
                 null,
-                <DialogBox dialogTitle="Editing group..." noClose={true}>
+                <DialogBox dialogTitle={actionTitle} noClose={true}>
                     <Spinner/>
                 </DialogBox>
             );
 
-            this.modifyGroup(groupId, name, description);
+            this.modifyGroup(groupId, name, description)
+                .then(data => API.upsertGroup(data));
         };
         var doDelete = () => {
             this.render(
@@ -122,27 +106,26 @@ class NectdApp {
 
         this.render(
             null,
-            <DialogBox dialogTitle="Edit group" onClose={() => this.render()}>
+            <DialogBox dialogTitle={dialogTitle} onClose={() => this.render()}>
                 <label>Name <input type="text" ref={input => {
                     if (input) nameFld = input.getDOMNode()
-                }} defaultValue={name}/></label><br/>
+                }} defaultValue={group.name}/></label><br/>
                 <label>Description <input type="text" ref={input => {
                     if (input) descrFld = input.getDOMNode()
-                }} defaultValue={description}/></label><br/>
+                }} defaultValue={group.description}/></label><br/>
                 <button type="button" onClick={() => doEdit()}>Save</button>
-                <button type="button" onClick={() => doDelete()}>Delete</button>
+                {deleteBtn}
             </DialogBox>
         );
     }
 
-    createGroup(name, description) {
-        API.post("account/groups/create?sharable=true", { name, description })
-            .then(data => API.upsertGroup(data));
-    }
+    modifyGroup(groupId, name, description) {
+        var endpoint = groupId ? "" : "create?sharable=true",
+            payload = { name, description };
 
-    modifyGroup(nodeId, name, description) {
-        API.post(`account/groups/`, { nodeId, name, description })
-            .then(data => API.upsertGroup(data));
+        if (groupId) payload.nodeId = groupId;
+
+        return API.post(`account/groups/${endpoint}`, payload);
     }
 
     deleteGroup(groupId) {

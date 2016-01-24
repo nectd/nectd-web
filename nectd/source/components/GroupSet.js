@@ -17,7 +17,7 @@ export default class GroupSet extends React.Component {
                 {groups.filter(group => !group.default).map(
                     group => <Group key={group.groupId} {...group} contacts={this.props.groupContacts[group.nodeId]}/>
                 )}
-                <button type="button" onClick={App.newGroup.bind(App)}>New list</button>
+                <button type="button" onClick={() => App.editGroup()}>New list</button>
             </div>
         }
 

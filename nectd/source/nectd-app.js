@@ -70,7 +70,7 @@ class NectdApp {
 
             this.render(
                 null,
-                <DialogBox dialogTitle="New group" noClose={true}>
+                <DialogBox dialogTitle="Creating group..." noClose={true}>
                     <Spinner/>
                 </DialogBox>
             );
@@ -92,8 +92,56 @@ class NectdApp {
         );
     }
 
+    editGroup(groupId, name, description) {
+        var nameFld, descrFld;
+        var doEdit = () => {
+            var name = nameFld.value,
+                description = descrFld.value;
+
+            if (!name || !description) return;
+
+            this.render(
+                null,
+                <DialogBox dialogTitle="Editing group..." noClose={true}>
+                    <Spinner/>
+                </DialogBox>
+            );
+
+            this.modifyGroup(groupId, name, description);
+        };
+        var doDelete = () => {
+            this.render(
+                null,
+                <DialogBox dialogTitle="Deleting group..." noClose={true}>
+                    <Spinner/>
+                </DialogBox>
+            );
+
+            this.deleteGroup(groupId);
+        };
+
+        this.render(
+            null,
+            <DialogBox dialogTitle="Edit group" onClose={() => this.render()}>
+                <label>Name <input type="text" ref={input => {
+                    if (input) nameFld = input.getDOMNode()
+                }} defaultValue={name}/></label><br/>
+                <label>Description <input type="text" ref={input => {
+                    if (input) descrFld = input.getDOMNode()
+                }} defaultValue={description}/></label><br/>
+                <button type="button" onClick={() => doEdit()}>Save</button>
+                <button type="button" onClick={() => doDelete()}>Delete</button>
+            </DialogBox>
+        );
+    }
+
     createGroup(name, description) {
         API.post("account/groups/create?sharable=true", { name, description })
+            .then(() => API.fetchUserData("groups"));
+    }
+
+    modifyGroup(nodeId, name, description) {
+        API.post(`account/groups/`, { nodeId, name, description })
             .then(() => API.fetchUserData("groups"));
     }
 

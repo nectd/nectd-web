@@ -5,9 +5,8 @@ import API from "../scripts/nectd";
 import App from "../nectd-app";
 
 export default class Group extends React.Component {
-    deleteGroup() {
-        this.setState({ removing: true });
-        App.deleteGroup(this.props.nodeId);
+    editGroup() {
+        App.editGroup(this.props.nodeId, this.props.name, this.props.description || "");
     }
 
     render() {
@@ -23,7 +22,7 @@ export default class Group extends React.Component {
         if (this.props.contacts) {
             contacts = this.props.contacts;
             btn = this.state && this.state.removing ? <Spinner/>
-                    : <button type="button" className="group-action fa fa-times" onClick={() => this.deleteGroup()}></button>;
+                    : <button type="button" className="group-action fa fa-pencil" onClick={() => this.editGroup()}></button>;
         }
 
         return <div className="group" data-group-id={this.props.nodeId}>

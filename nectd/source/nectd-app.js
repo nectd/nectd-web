@@ -137,12 +137,12 @@ class NectdApp {
 
     createGroup(name, description) {
         API.post("account/groups/create?sharable=true", { name, description })
-            .then(() => API.fetchUserData("groups"));
+            .then(data => API.upsertGroup(data));
     }
 
     modifyGroup(nodeId, name, description) {
         API.post(`account/groups/`, { nodeId, name, description })
-            .then(() => API.fetchUserData("groups"));
+            .then(data => API.upsertGroup(data));
     }
 
     deleteGroup(groupId) {

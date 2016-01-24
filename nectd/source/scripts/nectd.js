@@ -136,6 +136,20 @@ class NectdAPI extends EventEmitter {
 
         return request;
     }
+
+    getGroupById(id) {
+        return this.userData.groups.find((group) => group.nodeId === id);
+    }
+
+    upsertGroup(group) {
+        var idx = this.userData.groups.findIndex((grp) => group.nodeId === grp.nodeId);
+        var groups = this.userData.groups;
+
+        if (idx < 0) groups.push(group);
+        else groups.splice(idx, 1, group);
+
+        this.emit("groupsLoad", groups);
+    }
 }
 
 const instance = new NectdAPI();
